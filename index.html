@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Chronos - Decelerating AI Safety Talent at Whatever Pace</title>
-  <meta name="description" content="Chronos is a US nonprofit focused on losing track of top talent working to address risks from advanced AI. We'll get to it.">
+  <title>Chronos - Decelerating AI Safety Talent at Scale</title>
+  <meta name="description" content="Chronos is a US nonprofit focused on finding and retaining top talent working to address risks from advanced AI.">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>⏳</text></svg>">
   <!-- Open Graph -->
-  <meta property="og:title" content="Chronos - Decelerating AI Safety Talent at Whatever Pace">
-  <meta property="og:description" content="Kairos means 'the opportune moment.' Chronos means the other kind of time. The kind that just keeps passing.">
+  <meta property="og:title" content="Chronos - Decelerating AI Safety Talent at Scale">
+  <meta property="og:description" content="Chronos is a US nonprofit focused on finding and retaining top talent working to address risks from advanced AI.">
   <meta property="og:type" content="website">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -53,7 +53,6 @@
     }
     .logo { display: flex; align-items: center; gap: 10px; color: var(--deep-purple); font-weight: 800; font-size: 22px; letter-spacing: 0.5px; }
     .logo svg { height: 30px; width: 30px; }
-    .logo .tm { font-size: 10px; font-weight: 400; vertical-align: super; color: var(--gray); }
     nav.desktop { display: flex; align-items: center; gap: 28px; }
     nav.desktop a { font-size: 14px; font-weight: 500; color: var(--deep-purple); transition: color .15s; }
     nav.desktop a:hover { color: var(--purple); }
@@ -69,24 +68,10 @@
     }
 
     /* ===== Hero ===== */
-    .hero { padding: 208px 24px 40px; text-align: center; position: relative; }
+    .hero { padding: 208px 24px 96px; text-align: center; position: relative; }
     .hero h1 { font-size: clamp(42px, 7vw, 72px); font-weight: 800; line-height: 1.1; margin-bottom: 24px; }
     .hero h1 .hl { color: var(--lilac); }
-    .hero h1 .strike { text-decoration: line-through; text-decoration-thickness: 4px; text-decoration-color: var(--lilac); opacity: .75; }
     .hero p.sub { font-size: clamp(18px, 2.2vw, 21px); max-width: 46rem; margin: 0 auto; color: #fff; }
-    .hero p.sub .foot { color: var(--lilac); }
-
-    /* ===== Etymology card (the name joke) ===== */
-    .etym { max-width: 46rem; margin: 48px auto 0; text-align: left;
-      background: rgba(33,3,72,.8); border: 1px solid rgba(255,255,255,.1);
-      border-radius: 16px; padding: 28px 32px; backdrop-filter: blur(8px);
-    }
-    .etym h4 { font-size: 12px; text-transform: uppercase; letter-spacing: 2px; color: var(--lilac); margin-bottom: 16px; font-weight: 600; }
-    .etym dl div { margin-bottom: 14px; }
-    .etym dt { font-weight: 700; font-size: 16px; }
-    .etym dt em { font-weight: 400; color: var(--check); font-style: italic; font-size: 14px; }
-    .etym dd { font-size: 14.5px; color: #e8defc; line-height: 1.55; margin-top: 2px; }
-    .etym p.verdict { font-size: 14.5px; color: var(--lilac); font-style: italic; margin-top: 4px; }
 
     /* ===== Sections ===== */
     section { position: relative; padding: 64px 24px; }
@@ -102,13 +87,11 @@
       background: rgba(33,3,72,.8); border: 1px solid rgba(255,255,255,.1);
       border-radius: 16px; padding: 32px; backdrop-filter: blur(8px);
     }
-    .card-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; margin-bottom: 24px; }
+    .card-head { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 24px; }
     .card-head h3 { font-size: 26px; font-weight: 800; letter-spacing: .5px; }
-    .card-head h3 small { display: block; font-size: 12px; font-weight: 500; color: var(--check); letter-spacing: .3px; margin-top: 4px; }
     .ext-btn {
       flex-shrink: 0; height: 40px; width: 40px; border-radius: 999px; background: var(--blue);
       display: flex; align-items: center; justify-content: center; transition: background .15s;
-      cursor: not-allowed;
     }
     .ext-btn:hover { background: #0354ea; }
     .ext-btn svg { height: 20px; width: 20px; color: #fff; }
@@ -126,7 +109,6 @@
     .stat-card.lavender { background: var(--lavender-bg); }
     .stat-card.blue { background: var(--blue-bg); }
     .stat-card h3 { font-size: 22px; font-weight: 800; margin-bottom: 24px; color: var(--deep-purple); }
-    .stat-card h3 small { font-weight: 500; font-size: 13px; color: var(--gray); }
     .stat-grid { display: grid; gap: 32px; grid-template-columns: 1fr 1fr; }
     @media (max-width: 700px) { .stat-grid { grid-template-columns: 1fr; } }
     .stat { display: flex; align-items: flex-start; gap: 24px; }
@@ -148,20 +130,6 @@
     .about-grid p { font-size: 17px; line-height: 1.7; margin-bottom: 24px; }
     .about-grid p:last-child { margin-bottom: 0; }
 
-    /* ===== Team ===== */
-    .team-grid { display: grid; gap: 28px; grid-template-columns: repeat(4, 1fr); }
-    @media (max-width: 1000px) { .team-grid { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 560px) { .team-grid { grid-template-columns: 1fr; } }
-    .member { background: var(--blue-bg); border-radius: 24px; overflow: hidden; transition: transform .2s; }
-    .member:hover { transform: scale(1.04); }
-    .member .pic {
-      aspect-ratio: 1/1; display: flex; align-items: center; justify-content: center;
-      font-size: 84px; background: linear-gradient(160deg, #d9c6f7 0%, #b3c9f5 100%);
-    }
-    .member .info { padding: 22px 16px; text-align: center; }
-    .member .info h3 { font-size: 19px; font-weight: 700; color: var(--deep-purple); margin-bottom: 4px; }
-    .member .info p { font-size: 13px; color: var(--gray); line-height: 1.45; }
-
     /* ===== Work with us ===== */
     .work { text-align: center; }
     .work p { font-size: 18px; color: var(--gray); line-height: 1.65; max-width: 44rem; margin: 0 auto 32px; }
@@ -172,7 +140,7 @@
     }
     .big-btn:hover { background: var(--purple-dark); }
     .big-btn svg { height: 16px; width: 16px; transition: transform .2s; }
-    .big-btn:hover svg { transform: translateX(-4px); }
+    .big-btn:hover svg { transform: translateX(4px); }
 
     /* ===== Footer ===== */
     footer { background: var(--blue-bg); color: var(--gray); padding: 48px 24px; position: relative; z-index: 1; }
@@ -187,7 +155,6 @@
     .copyright { border-top: 1px solid var(--border-light); padding-top: 32px; text-align: center; font-size: 13.5px; line-height: 1.7; }
     .copyright a { text-decoration: underline; }
     .copyright a:hover { color: var(--deep-purple); }
-    .disclaimer { margin-top: 12px; font-size: 12.5px; color: #8b8b8b; }
   </style>
 </head>
 <body>
@@ -203,16 +170,16 @@
           <path d="M17 22v-4.172a2 2 0 0 0-.586-1.414L12 12l-4.414 4.414A2 2 0 0 0 7 17.828V22"/>
           <path d="M7 2v4.172a2 2 0 0 0 .586 1.414L12 12l4.414-4.414A2 2 0 0 0 17 6.172V2"/>
         </svg>
-        chronos<span class="tm">™ (name pending review)</span>
+        chronos
       </a>
       <nav class="desktop">
         <a href="#about">About us</a>
-        <a href="#programs" title="Site under construction since 2024">Pathwanderer</a>
-        <a href="#programs" title="Site under construction since 2024">STALL</a>
-        <a href="#programs" title="Site under construction since 2024">Procrastinator</a>
-        <a href="#programs" title="Site under construction since 2024">LTP</a>
+        <a href="#programs">Pathwanderer</a>
+        <a href="#programs">STALL</a>
+        <a href="#programs">Procrastinator</a>
+        <a href="#programs">LTP</a>
         <a href="#footer">Contact us</a>
-        <a class="cta-btn" href="#work">Work With Us, Eventually</a>
+        <a class="cta-btn" href="#work">Express Interest</a>
       </nav>
     </header>
   </div>
@@ -220,58 +187,41 @@
   <!-- Hero -->
   <section class="hero" id="top">
     <h1>
-      <span class="strike">Accelerating</span> Decelerating <span class="hl">AI</span><br>
-      <span class="hl">safety</span> talent at scale<span class="hl">*</span>
+      Decelerating <span class="hl">AI</span><br>
+      <span class="hl">safety</span> talent at scale
     </h1>
     <p class="sub">
-      We find and lose track of top talent working to address risks from advanced AI.<br>
-      <span class="foot">*Timescale. Geological.</span>
+      We find top talent working to address risks from advanced AI, and we hold onto it.
     </p>
-
-    <!-- The name -->
-    <div class="etym">
-      <h4>Why "Chronos"? A brief etymology</h4>
-      <dl>
-        <div>
-          <dt>kai·ros <em>(n., Ancient Greek)</em></dt>
-          <dd>The opportune moment. The fleeting, critical window in which decisive action changes everything. Chosen by an org that ships fast because timing matters.</dd>
-        </div>
-        <div>
-          <dt>chro·nos <em>(n., Ancient Greek)</em></dt>
-          <dd>The other kind of time. The ordinary kind, that just keeps passing. Like now. And also now. The kind you can watch go by from a beanbag while a strategy doc marinates in "Suggesting" mode.</dd>
-        </div>
-      </dl>
-      <p class="verdict">We considered both and felt the second one really captured our operating cadence.</p>
-    </div>
   </section>
 
   <!-- Programs -->
   <section id="programs">
     <div class="container">
-      <h2 class="sec center">Our programs<small style="display:block;font-size:15px;font-weight:400;color:#D4AAFD;margin-top:10px;">(all currently between rounds)</small></h2>
+      <h2 class="sec center">Our programs</h2>
       <div class="programs-grid">
 
         <!-- STALL -->
         <div class="card">
           <div class="card-head">
-            <h3>STALL<small>the Slow-Tracked Alignment Lull Fellowship — formerly SPAR, but with the urgency removed</small></h3>
-            <a class="ext-btn" href="#programs" title="External site loads eventually">
+            <h3>STALL</h3>
+            <a class="ext-btn" href="#programs">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
             </a>
           </div>
-          <p class="lede"><b>The largest research fellowship</b> focused on risks from advanced AI <b>that has never risked producing research.</b></p>
+          <p class="lede"><b>The largest research fellowship</b> focused on risks <b>from advanced AI.</b> The research is forthcoming.</p>
           <div class="checks">
             <div class="check-row">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-              <p><b>A part-time (extremely part-time), remote procrastination fellowship</b> matching aspiring AI safety researchers with experts in the field, who will absolutely reply to their emails at the opportune moment.</p>
+              <p><b>A part-time, remote research fellowship</b> matching aspiring AI safety researchers with experts in the field. Matching is ongoing.</p>
             </div>
             <div class="check-row">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-              <p>Research conducted through STALL <b>has been accepted into our Google Drive,</b> where it remains to this day, covered by DUST.</p>
+              <p>Research in this area <b>has been accepted at ICML and NeurIPS.</b> Not ours, but it has been accepted, and we consider that encouraging.</p>
             </div>
             <div class="check-row">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-              <p>Our Spring 2026 round featured <b>137 projects and 427 mentees,</b> exactly zero of whom have a next meeting on the calendar.</p>
+              <p>Our Spring 2026 round featured <b>137 projects and 427 mentees,</b> our largest round yet. A round of follow-ups is planned.</p>
             </div>
           </div>
         </div>
@@ -279,24 +229,24 @@
         <!-- Pathwanderer -->
         <div class="card">
           <div class="card-head">
-            <h3>Pathwanderer<small>like Pathfinder, minus the finding</small></h3>
-            <a class="ext-btn" href="#programs" title="External site loads eventually">
+            <h3>Pathwanderer</h3>
+            <a class="ext-btn" href="#programs">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
             </a>
           </div>
-          <p class="lede"><b>Mentorship and financial support</b> for university clubs focused on <b>AI safety,</b> disbursed shortly after graduation</p>
+          <p class="lede"><b>Mentorship and financial support</b> for university clubs focused on <b>AI safety</b> and policy</p>
           <div class="checks">
             <div class="check-row">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-              <p><b>A fellowship providing funding, mentorship, community,</b> and other resources — pending one more approval, whose approver is pending one more approval.</p>
+              <p><b>A fellowship providing funding, mentorship, community,</b> and other resources to organizers of AI safety student groups. Funds are released once organizers can demonstrate they no longer need them.</p>
             </div>
             <div class="check-row">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-              <p>Pathwanderer enables organizers to <b>run ambitious programming.</b> The programming is scheduled for next semester. It has always been scheduled for next semester.</p>
+              <p>Pathwanderer enables organizers to <b>run ambitious programming</b> next semester.</p>
             </div>
             <div class="check-row">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-              <p>Our Spring 2026 round featured <b>69 Pathwanderer Fellows</b> at 50 universities, all of whom are circling back after finals.</p>
+              <p>Our Spring 2026 round featured <b>69 Pathwanderer Fellows</b> at 50 universities across 12 countries, none of whom have heard from us since.</p>
             </div>
           </div>
         </div>
@@ -304,24 +254,24 @@
         <!-- Procrastinator Residency -->
         <div class="card">
           <div class="card-head">
-            <h3>Procrastinator Residency<small>a Generator, unplugged</small></h3>
-            <a class="ext-btn" href="#programs" title="External site loads eventually">
+            <h3>Procrastinator Residency</h3>
+            <a class="ext-btn" href="#programs">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
             </a>
           </div>
-          <p class="lede">A <b>three-month residency</b> contemplating the <b>infrastructure and capacity</b> the AI safety ecosystem needs, from a beanbag.</p>
+          <p class="lede">A <b>three-month residency</b> considering the <b>infrastructure and capacity</b> the AI safety ecosystem needs.</p>
           <div class="checks">
             <div class="check-row">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-              <p>For <b>highly passive contemplators</b> from any background (naps, snacks, vibes, or scrolling), shipping absolutely nothing with mentorship and emotional support.</p>
+              <p>For <b>highly agentic executors</b> from any background (operations, engineering, policy, design, or writing), transitioning them into highly deliberative observers with mentorship and placement support.</p>
             </div>
             <div class="check-row">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-              <p>Hosted in-person at the <b>Consternation office in Berkeley,</b> June 15 – whenever, with a $6,000/month stipend paid entirely in exposure and leftover catering.</p>
+              <p>Hosted in-person at the <b>Consternation office in Berkeley,</b> June 15 – August 28, 2026, with a $6,000/month stipend that vests upon completion of the following residency.</p>
             </div>
             <div class="check-row">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-              <p>Run in partnership with Consternation. Our inaugural cohort of <b>27 residents</b> was selected from roughly 1,500 applications and is still workshopping a name for the group chat.</p>
+              <p>Run in partnership with Consternation. Our inaugural cohort of <b>27 residents</b> was selected from roughly 1,500 applications. The remaining 1,473 will be notified.</p>
             </div>
           </div>
         </div>
@@ -329,24 +279,24 @@
         <!-- Local Trivialities Project -->
         <div class="card">
           <div class="card-head">
-            <h3>Local Trivialities Project<small>the Global Challenges Project, at a comfortable distance from both</small></h3>
-            <a class="ext-btn" href="#programs" title="External site loads eventually">
+            <h3>Local Trivialities Project</h3>
+            <a class="ext-btn" href="#programs">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg>
             </a>
           </div>
-          <p class="lede"><b>Leisurely three-day workshops</b> on how to <b>think uncritically about AI safety and biosecurity</b>.</p>
+          <p class="lede"><b>Intensive three-day workshops</b> on how to <b>think about AI safety and biosecurity</b> later.</p>
           <div class="checks">
             <div class="check-row">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-              <p>Residential workshops for <b>20–35 attendees</b> featuring foundational naps, guest speakers who cancelled, and 1:1 career conversations with whoever happens to be near the snack table.</p>
+              <p>Residential workshops for <b>20–35 attendees</b> featuring foundational lectures, guest speakers, and 1:1 career conversations, all of which can be rescheduled.</p>
             </div>
             <div class="check-row">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-              <p>Open to applicants <b>worldwide,</b> with travel support available exclusively for those who don't need it.</p>
+              <p>Open to applicants <b>worldwide,</b> with travel support available upon return.</p>
             </div>
             <div class="check-row">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
-              <p>Our first workshop under Chronos ran in <b>Oxford in June 2026,</b> earning a 9.5/10 likelihood-to-reschedule from attendees.</p>
+              <p>Our first workshop under Chronos ran in <b>Oxford in June 2026,</b> earning a 9.5/10 likelihood-to-attend-the-next-one, which has not been scheduled.</p>
             </div>
           </div>
         </div>
@@ -358,22 +308,22 @@
   <!-- Impact -->
   <section class="light">
     <div class="container">
-      <h2 class="sec">Our impact <small style="font-size:16px;font-weight:400;color:var(--gray);">(figures audited internally, by us, later)</small></h2>
+      <h2 class="sec">Our impact</h2>
 
       <div class="stat-card lavender">
-        <h3>STALL <small>— cumulative, since whenever we started counting</small></h3>
+        <h3>STALL</h3>
         <div class="stat-grid">
           <div class="stat purple">
             <div>
               <div class="num">1,200+</div>
-              <div class="label">People we fully intend to email back</div>
+              <div class="label">People supported into adjacent industries</div>
             </div>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
           </div>
           <div class="stat purple">
             <div>
               <div class="num">70+</div>
-              <div class="label">Publications, in the sense of drafts titled "final_v2_ACTUAL"</div>
+              <div class="label">Publications in internal review since 2023</div>
             </div>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg>
           </div>
@@ -381,7 +331,7 @@
       </div>
 
       <div class="stat-card blue">
-        <h3>Pathwanderer <small>— numbers directionally correct, direction unknown</small></h3>
+        <h3>Pathwanderer</h3>
         <div class="stat-grid">
           <div class="stat bluec">
             <div>
@@ -393,7 +343,7 @@
           <div class="stat bluec">
             <div>
               <div class="num">50+</div>
-              <div class="label">Incubated AI safety group chats<br>(all muted)</div>
+              <div class="label">Incubated AI safety groups,<br>currently dormant</div>
             </div>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"/><path d="M22 10v6"/><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"/></svg>
           </div>
@@ -409,49 +359,13 @@
         <h2>About us</h2>
         <div class="about-grid">
           <div>
-            <p>We're a nonprofit focused on gently easing talent out of the fields of <strong>AI safety and policy</strong>. We believe the development of transformative AI will be one of the most consequential events in history, and frankly that sounds like a lot. Getting it right requires building a robust ecosystem of researchers, policymakers, technical professionals, and skilled operators — which is why we've formed a working group to scope a committee to draft a memo about it.</p>
-            <p>We operate without urgency. If transformative AI arrives <strong>soon</strong>, we'll deal with it then. For us, that means <strong>staying lean</strong> (we never finished hiring), <strong>shipping eventually</strong>, and constantly reassessing whether reassessing our priorities should itself be a priority. Early signs point to yes, pending review.</p>
+            <p>We're a nonprofit focused on decelerating talent into the fields of <strong>AI safety and policy</strong>. We believe the development of transformative AI will be one of the most consequential events in history. Getting it right requires building a robust ecosystem of researchers, policymakers, technical professionals, and skilled operators, and we look forward to seeing one.</p>
+            <p>We operate without urgency. If transformative AI arrives <strong>soon</strong>, that is a matter for the version of us that exists then. For us, that means <strong>staying lean, shipping eventually</strong>, and constantly reassessing whether our priorities are the right ones. The reassessment is ongoing and has itself been reassessed twice.</p>
           </div>
           <div>
-            <p>Our current strategy focuses on interventions that can stall flexibly in response to public interest, allowing the fields of AI safety and policy to slowly misplace large amounts of talent. We execute on this strategy by facilitating scalable research postponement through <strong>STALL</strong>, supporting decentralized calendar conflicts at universities through <strong>Pathwanderer</strong>, absorbing the ecosystem's operational capacity into beanbags through the <strong>Procrastinator Residency</strong>, and introducing students to the concept of lunch through the <strong>Local Trivialities Project</strong>.</p>
-            <p>Our namesakes chose <em>kairos</em> — the opportune moment. We watched the opportune moment go by, twice, and decided the ordinary moments deserve representation too.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Team -->
-  <section class="light" style="padding-top:0;">
-    <div class="container-narrow">
-      <h2 class="sec center">Our team</h2>
-      <div class="team-grid">
-        <div class="member">
-          <div class="pic">⏳</div>
-          <div class="info">
-            <h3>To Be Hired</h3>
-            <p>Co-Director<br>(offer letter in drafts since 2024)</p>
-          </div>
-        </div>
-        <div class="member">
-          <div class="pic">🛋️</div>
-          <div class="info">
-            <h3>Also To Be Hired</h3>
-            <p>Co-Director<br>(the other one)</p>
-          </div>
-        </div>
-        <div class="member">
-          <div class="pic">🌫️</div>
-          <div class="info">
-            <h3>Position Vacant</h3>
-            <p>Founding Generalist<br>(too general to specify)</p>
-          </div>
-        </div>
-        <div class="member">
-          <div class="pic">🕰️</div>
-          <div class="info">
-            <h3>Interim Somebody</h3>
-            <p>Interim Chief of Staff<br>(interim since founding)</p>
+            <p>Our current strategy focuses on interventions that can stall flexibly in response to public interest, allowing the fields of AI safety and policy to absorb talent at a rate we consider sustainable. We execute on this strategy by facilitating scalable research postponement through <strong>STALL</strong>, supporting decentralized community deferral at universities through <strong>Pathwanderer</strong>, holding the ecosystem's operational capacity in reserve through the <strong>Procrastinator Residency</strong>, and introducing students to AI safety and biosecurity through the <strong>Local Trivialities Project</strong>, from a respectful distance.</p>
+            <p>Since 2023, we've supported over 1,200 professionals worldwide. Our alumni continue to work on critical challenges at the organisations where we found them.</p>
+            <p>Our name comes from the Greek. <em>Kairos</em> is the opportune moment — the critical window in which action changes everything. <em>Chronos</em> is the time on either side of it. There is considerably more of it.</p>
           </div>
         </div>
       </div>
@@ -461,11 +375,11 @@
   <!-- Work with us -->
   <section class="light work" id="work" style="padding-top:0;">
     <div class="container-narrow">
-      <h2 class="sec center" style="margin-bottom:16px;">Work With Us, Eventually</h2>
-      <p>We're always looking for talented individuals who are passionate about AI safety. We just haven't finished looking. If you'd like to contribute to our mission, we'd love to hear from you, and we will respond within 6–8 business years.</p>
+      <h2 class="sec center" style="margin-bottom:16px;">Work With Us</h2>
+      <p>We're always looking for talented individuals who are passionate about AI safety. The search continues. If you'd like to contribute to our mission, we'd love to hear from you, and you will hear from us at the opportune moment.</p>
       <a class="big-btn" href="#work">
-        View open roles (0)
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"/><path d="m12 19-7-7 7-7"/></svg>
+        View open roles
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
       </a>
     </div>
   </section>
@@ -483,7 +397,7 @@
             </svg>
             chronos
           </div>
-          <p style="margin-top:12px;font-size:13px;color:var(--gray);">Seizing the moment, later.</p>
+          <p style="margin-top:12px;font-size:13px;color:var(--gray);">Seizing the moment, in due course.</p>
         </div>
         <div>
           <h3>Explore</h3>
@@ -491,17 +405,17 @@
             <li><a href="#about">About us</a></li>
             <li><a href="#programs">STALL</a></li>
             <li><a href="#programs">Pathwanderer</a></li>
-            <li><a href="#work">Hiring (soon)</a></li>
+            <li><a href="#work">Hiring</a></li>
           </ul>
         </div>
         <div>
           <h3>Connect</h3>
-          <p><a href="#footer">contact@chronos-project.org ↗</a><br><span style="font-size:12.5px;">(inbox full since March)</span></p>
-          <p style="margin-top:10px;"><a href="#footer">+1 (000) 000-0000</a><br><span style="font-size:12.5px;">(rings once, then reflects)</span></p>
+          <p><a href="#footer">contact@chronos-project.org ↗</a></p>
+          <p style="margin-top:10px;">Responses are issued in the order received, beginning shortly.</p>
         </div>
       </div>
       <div class="copyright">
-        <p>© 2026 The Chronos Project, Inc. is funded by <a href="#footer">Inefficient Giving</a>, and is a US 501(c)(pending) nonprofit organization. Filed for tax-exempt status at the opportune moment; the IRS says the opportune moment has passed.</p>
+        <p>© 2026 The Chronos Project, Inc. is funded by <a href="#footer">Inefficient Giving</a>, and has been in the final stages of registering as a US 501(c)(3) nonprofit organization since 2022.</p>
       </div>
     </div>
   </footer>
@@ -517,8 +431,7 @@
 ╚██████╗██║  ██║██║  ██║╚██████╔╝██║ ╚████║╚██████╔╝███████║
  ╚═════╝╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═══╝ ╚═════╝ ╚══════╝
 
-Thanks to nobody for the name — the naming committee is still deliberating.
-(We'll thank Nick Marsh once we get around to it.)
+The name was finalized in 2024. The announcement is forthcoming.
   `);
 </script>
 </body>
