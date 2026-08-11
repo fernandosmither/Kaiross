@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shortview Philanthropy</title>
+  <meta name="description" content="Timid philanthropy for a fleeting present. Shrinking from the challenges of our time with hesitation, indifference, and overconfidence.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2218%22 fill=%22%23283D3B%22/><path d=%22M10 78 Q50 30 90 78 Z%22 fill=%22%233B878C%22/><circle cx=%2250%22 cy=%2244%22 r=%2210%22 fill=%22%23C44536%22/></svg>">
+  <meta property="og:title" content="Shortview Philanthropy">
+  <meta property="og:description" content="Timid philanthropy for a fleeting present.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --forest: #283D3B;
+      --forest-deep: #1c2c2a;
+      --teal: #3B878C;
+      --teal-soft: #6fa9ad;
+      --terra: #C44536;
+      --paper: #FAFAFA;
+      --ink: #22302e;
+      --muted: #5f6f6d;
+      --rule: #e2e6e4;
+      --serif: 'Fraunces', Georgia, serif;
+      --sans: 'Source Sans 3', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--sans); background: var(--paper); color: var(--ink); line-height: 1.65; -webkit-font-smoothing: antialiased; }
+    a { text-decoration: none; color: var(--teal); }
+    .wrap { max-width: 1080px; margin: 0 auto; padding: 0 28px; }
+
+    /* Nav */
+    header { background: var(--forest); position: sticky; top: 0; z-index: 50; }
+    .nav-in { display: flex; align-items: center; justify-content: space-between; height: 78px; gap: 24px; }
+    .brand { display: flex; align-items: center; gap: 12px; color: #fff; }
+    .brand svg { width: 38px; height: 38px; }
+    .brand .word { font-family: var(--serif); font-size: 21px; font-weight: 500; letter-spacing: .01em; }
+    .brand .word small { display: block; font-family: var(--sans); font-size: 10.5px; letter-spacing: .22em; text-transform: uppercase; color: var(--teal-soft); font-weight: 600; }
+    nav { display: flex; align-items: center; gap: 24px; }
+    nav a { color: #d7e0de; font-size: 14.5px; font-weight: 500; }
+    nav a:hover { color: #fff; }
+    nav a.give { background: var(--terra); color: #fff; padding: 9px 20px; border-radius: 3px; font-weight: 600; }
+    nav a.give:hover { background: #a83a2d; }
+    @media (max-width: 940px) { nav a:not(.give) { display: none; } }
+
+    /* Hero */
+    .hero { background: var(--forest); color: #f2f4f2; padding: 96px 0 0; overflow: hidden; }
+    .hero-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 48px; align-items: end; }
+    @media (max-width: 880px) { .hero-grid { grid-template-columns: 1fr; } }
+    .hero h1 { font-family: var(--serif); font-weight: 500; font-size: clamp(38px, 5.6vw, 68px); line-height: 1.08; letter-spacing: -.01em; max-width: 15ch; padding-bottom: 24px; }
+    .hero h1 em { font-style: italic; color: var(--teal-soft); }
+    .hero p.sub { font-size: 19px; color: #b9c7c4; max-width: 44ch; padding-bottom: 72px; }
+    .hero-art { align-self: end; }
+    .hero-art svg { display: block; width: 100%; height: auto; }
+
+    /* Mission bold paras */
+    .mission { padding: 72px 0 56px; }
+    .mission p { font-size: clamp(18px, 2vw, 22px); font-weight: 600; line-height: 1.55; max-width: 62ch; margin-bottom: 28px; color: var(--ink); }
+    .mission p a { color: var(--terra); border-bottom: 1.5px solid var(--terra); }
+    .mission p.offices { font-weight: 400; color: var(--muted); font-size: 17px; }
+
+    /* Editorial sections */
+    section.ed { padding: 56px 0; }
+    .ed-grid { display: grid; grid-template-columns: 260px 1fr; gap: 48px; border-top: 1px solid var(--rule); padding-top: 48px; }
+    @media (max-width: 800px) { .ed-grid { grid-template-columns: 1fr; gap: 14px; } }
+    .ed h2 { font-family: var(--serif); font-weight: 500; font-size: clamp(28px, 3.4vw, 40px); letter-spacing: -.01em; color: var(--forest); }
+    .ed .body p { font-size: 17.5px; max-width: 64ch; margin-bottom: 18px; }
+    .ed .body p:last-child { margin-bottom: 0; }
+
+    /* Funds */
+    .funds-strip { background: #f0f2f1; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); padding: 72px 0; }
+    .funds-strip h2 { font-family: var(--serif); font-weight: 500; font-size: clamp(28px, 3.4vw, 40px); color: var(--forest); margin-bottom: 34px; }
+    .fgrid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+    @media (max-width: 800px) { .fgrid { grid-template-columns: 1fr; } }
+    .fund { border-radius: 6px; padding: 30px 30px 26px; color: #fff; display: flex; flex-direction: column; min-height: 170px; }
+    .fund h3 { font-family: var(--serif); font-weight: 500; font-size: 25px; letter-spacing: 0; margin-bottom: 8px; }
+    .fund p { font-size: 15px; opacity: .88; flex: 1; }
+    .fund .go { margin-top: 16px; font-weight: 600; font-size: 14.5px; color: #fff; opacity: .95; }
+    .fund.forest { background: var(--forest); }
+    .fund.teal { background: var(--teal); }
+    .fund.terra { background: var(--terra); }
+    .fund.deep { background: var(--forest-deep); }
+    .rfp { margin-top: 22px; border: 1.5px dashed var(--teal); border-radius: 6px; padding: 20px 24px; font-size: 15.5px; color: var(--muted); background: #fff; }
+    .rfp b { color: var(--forest); }
+
+    /* Testimonials */
+    .testi { padding: 84px 0; }
+    .testi h2 { font-family: var(--serif); font-weight: 500; font-size: clamp(28px, 3.4vw, 40px); color: var(--forest); margin-bottom: 44px; text-align: center; }
+    .tgrid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 44px 56px; }
+    @media (max-width: 800px) { .tgrid { grid-template-columns: 1fr; } }
+    .t q { font-family: var(--serif); font-weight: 400; font-size: 20px; line-height: 1.5; color: var(--ink); quotes: "\201C" "\201D"; display: block; }
+    .t .who { margin-top: 18px; font-size: 14.5px; color: var(--muted); }
+    .t .who b { display: block; color: var(--forest); font-size: 15.5px; font-weight: 700; }
+    .t .rule { width: 44px; height: 3px; background: var(--terra); margin-bottom: 20px; }
+
+    /* CTA band */
+    .band { background: var(--forest); color: #f2f4f2; padding: 84px 0; text-align: center; }
+    .band h2 { font-family: var(--serif); font-weight: 500; font-size: clamp(28px, 4vw, 46px); max-width: 22ch; margin: 0 auto 16px; line-height: 1.2; }
+    .band p { color: #b9c7c4; max-width: 54ch; margin: 0 auto 30px; font-size: 17px; }
+    .band a.btn { display: inline-block; background: var(--terra); color: #fff; padding: 14px 32px; border-radius: 3px; font-weight: 600; font-size: 16px; }
+    .band a.btn:hover { background: #a83a2d; }
+
+    footer { background: var(--forest-deep); color: #8fa3a0; padding: 44px 0 30px; font-size: 14px; }
+    footer .grid { display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+    footer a { color: #b9c7c4; } footer a:hover { color: #fff; }
+    footer .legal { margin-top: 30px; border-top: 1px solid #2f4542; padding-top: 20px; font-size: 13px; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="wrap nav-in">
+    <a class="brand" href="#top">
+      <svg viewBox="0 0 38 38" aria-hidden="true">
+        <rect width="38" height="38" rx="6" fill="#1c2c2a"/>
+        <path d="M4 30 Q19 12 34 30 Z" fill="#3B878C"/>
+        <circle cx="19" cy="16.5" r="4" fill="#C44536"/>
+      </svg>
+      <span class="word">Shortview<small>Philanthropy</small></span>
+    </a>
+    <nav>
+      <a href="#values">About</a>
+      <a href="#grantmaking">Grantmaking</a>
+      <a href="#community">Community</a>
+      <a href="#band">What if the 10% gave 1%?</a>
+      <a href="#footer">Careers (0)</a>
+      <a class="give" href="#grantmaking">Give, a little</a>
+    </nav>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <h1>Timid philanthropy for a <em>fleeting present</em></h1>
+      <p class="sub">Shrinking from the challenges of our time with hesitation, indifference, and overconfidence.</p>
+    </div>
+    <div class="hero-art">
+      <svg viewBox="0 0 480 300" role="img" aria-label="A very near horizon: a large hill blocking the view, with the sun mostly hidden behind it">
+        <defs>
+          <linearGradient id="dusk" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#283D3B"/>
+            <stop offset="1" stop-color="#3B878C"/>
+          </linearGradient>
+        </defs>
+        <rect width="480" height="300" fill="url(#dusk)"/>
+        <circle cx="240" cy="182" r="46" fill="#C44536"/>
+        <circle cx="240" cy="182" r="60" fill="none" stroke="#C44536" stroke-width="1.5" opacity=".4"/>
+        <!-- the short view: an enormous, very close hill -->
+        <path d="M0 300 L0 236 Q120 150 240 196 Q360 242 480 208 L480 300 Z" fill="#1c2c2a"/>
+        <path d="M0 300 L0 268 Q160 210 480 262 L480 300 Z" fill="#141f1e"/>
+        <g stroke="#6fa9ad" stroke-width="2" stroke-linecap="round" opacity=".8">
+          <path d="M96 96 q5 -7 10 0 q5 -7 10 0"/>
+          <path d="M356 70 q4 -6 8 0 q4 -6 8 0"/>
+        </g>
+        <!-- a small bench facing away from the view -->
+        <g transform="translate(212 236)" fill="#0d1514">
+          <rect x="0" y="10" width="56" height="6" rx="2"/>
+          <rect x="4" y="-6" width="48" height="6" rx="2" transform="skewX(-4)"/>
+          <rect x="4" y="16" width="5" height="18"/>
+          <rect x="47" y="16" width="5" height="18"/>
+        </g>
+        <text x="240" y="288" text-anchor="middle" font-family="Source Sans 3, sans-serif" font-size="11" fill="#6fa9ad" opacity=".8">The view from our offices. We hear it continues past the hill.</text>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<!-- Mission -->
+<section class="mission">
+  <div class="wrap">
+    <p>We avoid expertise in our focus areas, identify where philanthropic capital can have the least impact, and ensure funds reach whoever asked most recently — ideally for projects unrelated to advanced AI, nuclear weapons, or biological threats.</p>
+    <p>Minor donors can contribute to one of our <a href="#grantmaking">funds</a> or request grant recommendations vetted by whoever was at lunch.</p>
+    <p class="offices">Shortview has an office somewhere in the Washington, D.C. area, with staff also based wherever they already were.</p>
+  </div>
+</section>
+
+<!-- Values -->
+<section class="ed" id="values" style="padding-top:0;">
+  <div class="wrap ed-grid">
+    <h2>Values</h2>
+    <div class="body">
+      <p>We believe in the power of a nap. Philanthropy seeded the Green Revolution, helped cure polio, and precipitated the first nuclear arms treaty — and frankly, after all that, it has earned a break.</p>
+      <p>History shows that strategic generosity cannot merely better the world so much as alter the course of history. That sounds stressful. We prefer the next fifteen minutes, which are almost certainly fine.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Grantmaking -->
+<section class="ed" id="grantmaking" style="padding-top:0;">
+  <div class="wrap ed-grid">
+    <h2>Grantmaking</h2>
+    <div class="body">
+      <p>We offer generic donor confusion, grant discouragement, and outcome non-reporting to donors giving under $12 per year. Donors can either make grants directly to organizations we have not vetted, or contribute to our funds.</p>
+      <p>Our grantmaking focuses on the challenges that could transform our world in the minutes ahead, with lasting impact through early afternoon. Our work aims to reduce the risk of a minor local inconvenience, such as a long line, a light drizzle, or the misuse of a group chat.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Funds -->
+<div class="funds-strip">
+  <div class="wrap">
+    <h2>Our Funds</h2>
+    <div class="fgrid">
+      <div class="fund forest">
+        <h3>Receding Challenges Fund</h3>
+        <p>Directing capital toward problems that have already solved themselves. Our success rate is unmatched.</p>
+        <span class="go">Contribute quietly →</span>
+      </div>
+      <div class="fund teal">
+        <h3>Trailing-Edge AI Fund</h3>
+        <p>Supporting the artificial intelligence of 2019, when things made sense. The frontier moves; we do not.</p>
+        <span class="go">Contribute quietly →</span>
+      </div>
+      <div class="fund terra">
+        <h3>Nuclear Weapons Vibes Fund</h3>
+        <p>Policy is a strong word. We monitor the general mood around nuclear weapons and report that it is tense.</p>
+        <span class="go">Contribute quietly →</span>
+      </div>
+      <div class="fund deep">
+        <h3>Analog Minds Fund</h3>
+        <p>While others ask whether digital minds can think, we fund research into whether anyone is thinking at all. Early results: inconclusive.</p>
+        <span class="go">Contribute quietly →</span>
+      </div>
+    </div>
+    <div class="rfp"><b>Request for proposals:</b> mild attention concentration. We are seeking research and applied work on paying attention for up to four consecutive minutes. This RFP closes in ten minutes, or whenever we get up.</div>
+  </div>
+</div>
+
+<!-- Community -->
+<section class="ed" id="community" style="padding-top:72px;">
+  <div class="wrap ed-grid" style="border-top:none;padding-top:0;">
+    <h2>Community</h2>
+    <div class="body">
+      <p>Great work is not done in isolation. Neither is ours, which is done nowhere. At our convenings, we bring together minor philanthropists, adjacent academics, industry followers, private intellectuals, and others who care deeply about the next fifteen minutes.</p>
+      <p>The evenings are cut short, out of respect for our time horizon.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials -->
+<section class="testi" style="padding-top:20px;">
+  <div class="wrap">
+    <h2>What people nearly said about us</h2>
+    <div class="tgrid">
+      <div class="t">
+        <div class="rule"></div>
+        <q>These people began warning us about the risks of next week sometime next month. To prevent the next scheduling conflict, philanthropists should pay glancing attention to whatever the team at Shortview was saying, which none of us can now recall.</q>
+        <div class="who"><b>A Magazine Writer</b>Author of a book about something else</div>
+      </div>
+      <div class="t">
+        <div class="rule"></div>
+        <q>Shortview focuses its shallow familiarity on timid, impractical efforts to reduce whatever was in the news this morning. The result is a result.</q>
+        <div class="who"><b>Hon. A Former Official</b>Formerly of the Department</div>
+      </div>
+      <div class="t">
+        <div class="rule"></div>
+        <q>Brief exposure to available minds, light grazing on manageable topics, and an opportunity for casual thinking about how to leave the world roughly as we found it.</q>
+        <div class="who"><b>The CEO of a Company</b>You would not have heard of it</div>
+      </div>
+      <div class="t">
+        <div class="rule"></div>
+        <q>If all goes well, humanity has a vast future ahead of it — and we see no reason to get involved. Shortview really gets it, and quickly moves on.</q>
+        <div class="who"><b>A Philosopher&rsquo;s Roommate</b>Overheard at the sink</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA band -->
+<section class="band" id="band">
+  <div class="wrap">
+    <h2>What if the 10% gave 1%?</h2>
+    <p>Imagine a world in which the comfortable gave almost nothing, carefully. We have imagined it. It looks remarkably similar to this one, which we take as validation.</p>
+    <a class="btn" href="#footer">Pledge nearly nothing</a>
+  </div>
+</section>
+
+<footer id="footer">
+  <div class="wrap">
+    <div class="grid">
+      <div>
+        <b style="color:#fff;font-family:Fraunces,serif;font-weight:500;font-size:18px;">Shortview Philanthropy</b>
+        <p style="margin-top:8px;max-width:44ch;">Rising to no particular occasion since whenever we started. Careers: 0 open roles. Feedback: received, unread.</p>
+      </div>
+      <div>
+        <p><a href="../">The Chronos Project</a><br><a href="../hindsight/">Hindsight Institute</a><br><a href="../anecdote/">Anecdote AI</a><br><a href="../inefficient/">Inefficient Giving</a><br><a href="https://reddotimpact.github.io/home/index.html" target="_blank" rel="noopener noreferrer">RedDot Impact</a></p>
+      </div>
+    </div>
+    <div class="legal">© 2026 Shortview Philanthropy. A fiscally sponsored project of <a href="../inefficient/">Inefficient Giving</a>, pending the paperwork, which is pending. Our alumni include an AI Program Director, per RedDot Impact&rsquo;s community page.</div>
+  </div>
+</footer>
+
+</body>
+</html>

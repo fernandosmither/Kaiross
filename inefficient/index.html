@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Inefficient Giving</title>
+  <meta name="description" content="A philanthropic funder that partners with trailing donors to divide their impact.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2220%22 fill=%22%23064d49%22/><text x=%2250%22 y=%2272%22 font-size=%2264%22 text-anchor=%22middle%22 fill=%22%23ffcbed%22>÷</text></svg>">
+  <meta property="og:title" content="Inefficient Giving">
+  <meta property="og:description" content="A philanthropic funder that partners with trailing donors to divide their impact.">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --white: #f6f6f6;
+      --ink: #0b1525;
+      --gray: #333333;
+      --gray-mid: #6c6c6c;
+      --green: #064d49;
+      --green-bright: #e3f5eb;
+      --green-light: #c8d8d5;
+      --blue-bright: #509ef0;
+      --blue-light: #d2e8ff;
+      --blue-super: #f2f8ff;
+      --pink: #ffcbed;
+      --pink-card: #ffbfe0;
+      --sans: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+      --serif: 'Source Serif 4', Georgia, serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--sans); background: var(--white); color: var(--ink); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    a { text-decoration: none; color: var(--green); }
+    .wrap { max-width: 1180px; margin: 0 auto; padding: 0 28px; }
+
+    /* Announcement banner */
+    .banner { background: var(--green); color: #fff; text-align: center; padding: 10px 16px; font-size: 13.5px; }
+    .banner a { color: var(--pink); text-decoration: underline; }
+
+    /* Nav */
+    header { background: var(--white); border-bottom: 1px solid #e3e3e0; position: sticky; top: 0; z-index: 50; }
+    .nav-in { display: flex; align-items: center; justify-content: space-between; height: 74px; gap: 24px; }
+    .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 20px; letter-spacing: -.02em; color: var(--ink); }
+    .brand .mark { width: 34px; height: 34px; }
+    nav { display: flex; align-items: center; gap: 26px; }
+    nav a { color: var(--ink); font-size: 15px; font-weight: 500; }
+    nav a:hover { color: var(--green); }
+    nav .search { width: 34px; height: 34px; border-radius: 50%; background: var(--green); display: grid; place-items: center; }
+    nav .search svg { width: 15px; height: 15px; stroke: #fff; }
+    @media (max-width: 820px) { nav a { display: none; } }
+
+    /* Hero */
+    .hero { padding: 92px 0 72px; }
+    .hero h1 { font-family: var(--serif); font-weight: 600; font-size: clamp(36px, 5.6vw, 66px); line-height: 1.12; letter-spacing: -.01em; max-width: 20ch; }
+    .hero h1 em { font-style: italic; color: var(--green); }
+    .hero p.lede { margin-top: 26px; font-size: clamp(16px, 1.8vw, 19px); color: var(--gray); max-width: 56ch; }
+    .hero .ctas { margin-top: 32px; display: flex; gap: 14px; flex-wrap: wrap; }
+    .btn { display: inline-block; padding: 13px 28px; border-radius: 999px; font-size: 15px; font-weight: 600; }
+    .btn.solid { background: var(--green); color: #fff; }
+    .btn.solid:hover { background: #0a6a64; }
+    .btn.line { border: 1.5px solid var(--ink); color: var(--ink); }
+    .btn.line:hover { border-color: var(--green); color: var(--green); }
+
+    /* Sections */
+    section { padding: 64px 0; }
+    h2.sec { font-family: var(--serif); font-weight: 600; font-size: clamp(28px, 3.6vw, 44px); letter-spacing: -.01em; margin-bottom: 10px; }
+    .sec-row { display: flex; align-items: baseline; justify-content: space-between; gap: 20px; flex-wrap: wrap; margin-bottom: 30px; }
+    .pn { display: flex; gap: 10px; }
+    .pn span { width: 40px; height: 40px; border: 1.5px solid var(--ink); border-radius: 50%; display: grid; place-items: center; font-size: 17px; color: var(--ink); }
+
+    /* Funds: horizontal scroll of colored cards */
+    .funds { display: flex; gap: 18px; overflow-x: auto; padding: 6px 4px 22px; scroll-snap-type: x mandatory; }
+    .funds::-webkit-scrollbar { height: 8px; }
+    .funds::-webkit-scrollbar-thumb { background: var(--green-light); border-radius: 4px; }
+    .fund { flex: 0 0 262px; scroll-snap-align: start; border-radius: 20px; padding: 26px 24px; min-height: 220px; display: flex; flex-direction: column; justify-content: space-between; }
+    .fund b { font-family: var(--serif); font-size: 21px; font-weight: 600; line-height: 1.25; letter-spacing: -.01em; display: block; }
+    .fund span { font-size: 14px; margin-top: 10px; display: block; }
+    .fund .arr { align-self: flex-end; font-size: 20px; margin-top: 18px; }
+    .fund.green { background: var(--green); color: #fff; } .fund.green a { color: #fff; }
+    .fund.pink { background: var(--pink-card); color: var(--ink); }
+    .fund.bluebright { background: var(--blue-bright); color: var(--ink); }
+    .fund.bluelight { background: var(--blue-light); color: var(--ink); }
+    .fund.mint { background: var(--green-bright); color: var(--ink); }
+    .fund.super { background: var(--blue-super); color: var(--ink); border: 1px solid #bdd5ed; }
+
+    /* Cause avoidance */
+    .cause { background: var(--green); color: #eef5f0; border-radius: 28px; padding: clamp(36px, 5vw, 64px); }
+    .cause h2 { font-family: var(--serif); font-weight: 600; font-size: clamp(26px, 3.4vw, 40px); color: #fff; margin-bottom: 18px; }
+    .cause p { max-width: 62ch; font-size: 17px; }
+    .cause a.how { color: var(--pink); font-weight: 600; display: inline-block; margin-top: 18px; }
+
+    /* News */
+    .news-item { border-top: 1px solid #ddddd8; padding: 30px 0; display: grid; grid-template-columns: 120px 1fr 220px; gap: 28px; align-items: start; }
+    @media (max-width: 860px) { .news-item { grid-template-columns: 1fr; gap: 10px; } }
+    .news-item .thumb { border-radius: 14px; height: 84px; width: 120px; }
+    @media (max-width: 860px) { .news-item .thumb { order: -1; } }
+    .news-item h3 { font-family: var(--serif); font-weight: 600; font-size: 23px; line-height: 1.3; letter-spacing: -.01em; }
+    .news-item h3 a { color: var(--ink); } .news-item h3 a:hover { color: var(--green); }
+    .news-item p { font-size: 15px; color: var(--gray); margin-top: 8px; max-width: 68ch; }
+    .news-item .cat { font-size: 12.5px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--green); text-align: right; }
+    @media (max-width: 860px) { .news-item .cat { text-align: left; } }
+
+    /* Featured regrets */
+    .regrets-strip { background: var(--blue-super); border-top: 1px solid #e0e8f2; border-bottom: 1px solid #e0e8f2; }
+    .regret-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    @media (max-width: 980px) { .regret-grid { grid-template-columns: 1fr; } }
+    .regret { background: #fff; border-radius: 20px; padding: 26px; border: 1px solid #e0e8f2; }
+    .regret .tag { font-size: 12px; letter-spacing: .07em; text-transform: uppercase; color: var(--green); font-weight: 700; }
+    .regret h3 { font-family: var(--serif); font-weight: 600; margin: 10px 0 10px; font-size: 21px; line-height: 1.3; }
+    .regret p { font-size: 14.5px; color: var(--gray); }
+    .regret .rm { display: inline-block; margin-top: 14px; font-weight: 600; font-size: 14px; }
+
+    /* Portfolio */
+    .portfolio p { font-size: 16px; color: var(--gray); max-width: 72ch; }
+
+    /* Footer */
+    footer { background: var(--ink); color: #b9c2cf; padding: 56px 0 32px; }
+    footer .grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 40px; }
+    @media (max-width: 820px) { footer .grid { grid-template-columns: 1fr; } }
+    footer h3 { font-family: var(--serif); font-weight: 600; color: #fff; font-size: 26px; line-height: 1.3; max-width: 20ch; }
+    footer h4 { color: #fff; font-size: 13px; letter-spacing: .1em; text-transform: uppercase; margin-bottom: 14px; }
+    footer ul { list-style: none; }
+    footer li { margin-bottom: 8px; font-size: 14.5px; }
+    footer a { color: #b9c2cf; } footer a:hover { color: #fff; }
+    footer form { display: flex; gap: 10px; margin-top: 20px; flex-wrap: wrap; }
+    footer input { padding: 12px 16px; border-radius: 999px; border: 1px solid #2a3850; background: #121f33; color: #fff; font-family: inherit; font-size: 14px; min-width: 220px; }
+    footer input::placeholder { color: #64748b; }
+    footer button { padding: 12px 24px; border-radius: 999px; border: none; background: var(--pink); color: var(--ink); font-family: inherit; font-weight: 700; cursor: pointer; }
+    footer .fine { margin-top: 10px; font-size: 12.5px; color: #64748b; }
+    footer .legal { margin-top: 44px; border-top: 1px solid #22304a; padding-top: 22px; font-size: 13px; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+  </style>
+</head>
+<body>
+
+<div class="banner">Closed Misanthropy is now Inefficient Giving. <a href="#news">Read less</a>.</div>
+
+<header>
+  <div class="wrap nav-in">
+    <a class="brand" href="#top">
+      <svg class="mark" viewBox="0 0 34 34" aria-hidden="true">
+        <rect width="34" height="34" rx="8" fill="#064d49"/>
+        <circle cx="17" cy="10.5" r="2.6" fill="#ffcbed"/>
+        <rect x="8" y="15.4" width="18" height="3.2" rx="1.6" fill="#ffcbed"/>
+        <circle cx="17" cy="23.5" r="2.6" fill="#ffcbed"/>
+      </svg>
+      Inefficient Giving
+    </a>
+    <nav>
+      <a href="#funds">Funds</a>
+      <a href="#news">Research &amp; News</a>
+      <a href="#cause">Our Approach</a>
+      <a href="#footer">About Us</a>
+      <span class="search" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></span>
+    </nav>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="hero" id="top">
+  <div class="wrap">
+    <h1>We&rsquo;re a philanthropic funder that partners with trailing donors to <em>divide</em> their impact.</h1>
+    <p class="lede">Inefficient has misdirected over $5 billion in grants since 2014. Our mission is to help others as little as we can with the resources available to us, and we are consistently under target.</p>
+    <div class="ctas">
+      <a class="btn solid" href="#footer">About Us</a>
+      <a class="btn line" href="#footer">Partner Against Us</a>
+    </div>
+  </div>
+</section>
+
+<!-- Funds -->
+<section id="funds" style="padding-top:20px;">
+  <div class="wrap">
+    <div class="sec-row">
+      <h2 class="sec">Our Funds</h2>
+      <div class="pn"><span>←</span><span>→</span></div>
+    </div>
+    <div class="funds">
+      <div class="fund green"><div><b>Scarcity &amp; Shrinkage</b><span>Decelerating growth and scientific progress</span></div><div class="arr">→</div></div>
+      <div class="fund pink"><div><b>Air Quantity</b><span>Pursuing more air, regardless of quality</span></div><div class="arr">→</div></div>
+      <div class="fund bluebright"><div><b>Bioinsecurity &amp; Pandemic Unpreparedness</b><span>Building complacency toward biological risk</span></div><div class="arr">→</div></div>
+      <div class="fund bluelight"><div><b>Ineffective Giving &amp; Hobbies</b><span>Empowering people to minimize their impact</span></div><div class="arr">→</div></div>
+      <div class="fund mint"><div><b>Farm Animal Indifference</b><span>Leaving the lives of farmed animals as they are</span></div><div class="arr">→</div></div>
+      <div class="fund green"><div><b>Hindcasting</b><span>Explaining how critical decisions were made, afterwards</span></div><div class="arr">→</div></div>
+      <div class="fund super"><div><b>Global Unaid Policy</b><span>Encouraging stingy and cost-ineffective aid</span></div><div class="arr">→</div></div>
+      <div class="fund pink"><div><b>Global Catastrophic Risk Appreciation</b><span>Admiring threats to civilization</span></div><div class="arr">→</div></div>
+      <div class="fund bluelight"><div><b>Global Stagnation</b><span>Supporting stagnation to preserve global poverty</span></div><div class="arr">→</div></div>
+      <div class="fund mint"><div><b>Global Health &amp; Wellbeing Observations</b><span>Noting health and wellbeing for some people</span></div><div class="arr">→</div></div>
+      <div class="fund green"><div><b>Lead Exposure Inaction Fund</b><span>Maintaining progress toward a lead-rich world</span></div><div class="arr">→</div></div>
+      <div class="fund bluebright"><div><b>Drifting Through Transformative AI</b><span>Assuming AI is safe and well-governed</span></div><div class="arr">→</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- Cause avoidance -->
+<section id="cause" style="padding-top:20px;">
+  <div class="wrap">
+    <div class="cause">
+      <h2>Strategic Cause Avoidance</h2>
+      <p>We believe the least important decision a philanthropist makes is choosing which causes to support. We conduct shallow research to identify the areas where our funding can help others the least, and fund those.</p>
+      <a class="how" href="#cause">How causes avoid us →</a>
+    </div>
+  </div>
+</section>
+
+<!-- Research & News -->
+<section id="news" style="padding-top:20px;">
+  <div class="wrap">
+    <h2 class="sec" style="margin-bottom:26px;">Research &amp; News</h2>
+
+    <div class="news-item">
+      <svg class="thumb" viewBox="0 0 120 84" aria-hidden="true"><rect width="120" height="84" rx="14" fill="#064d49"/><rect x="18" y="52" width="12" height="16" fill="#ffcbed"/><rect x="36" y="42" width="12" height="26" fill="#e3f5eb"/><rect x="54" y="56" width="12" height="12" fill="#ffcbed"/><rect x="72" y="30" width="12" height="38" fill="#509ef0"/><path d="M18 36 L84 20" stroke="#ffcbed" stroke-width="3" stroke-linecap="round" transform="rotate(14 51 28)"/></svg>
+      <div>
+        <h3><a href="#news">2025 Letter to the CEO</a></h3>
+        <p>Inefficient Giving misplaced over $1 billion in 2025, the most in our history. This significant milestone is the result of extraordinary dedication from our funders, staff, and grantees, who share the conviction that ineffective philanthropy is considerably easier.</p>
+      </div>
+      <div class="cat">From the desk of everyone</div>
+    </div>
+
+    <div class="news-item">
+      <svg class="thumb" viewBox="0 0 120 84" aria-hidden="true"><rect width="120" height="84" rx="14" fill="#d2e8ff"/><circle cx="44" cy="42" r="20" fill="#064d49"/><circle cx="76" cy="42" r="20" fill="none" stroke="#064d49" stroke-width="3" stroke-dasharray="5 5"/></svg>
+      <div>
+        <h3><a href="#news">Closed Misanthropy Is Now Inefficient Giving</a></h3>
+        <p>Our new name marks our previous chapter as we halve down on our short-standing goal of helping fewer funders decrease their impact. We believe philanthropy can be a far less vital force for progress than it is today, and we are getting there.</p>
+      </div>
+      <div class="cat">Rebrand</div>
+    </div>
+
+    <div class="news-item">
+      <svg class="thumb" viewBox="0 0 120 84" aria-hidden="true"><rect width="120" height="84" rx="14" fill="#ffbfe0"/><rect x="30" y="26" width="60" height="36" rx="6" fill="#f6f6f6"/><path d="M40 40 h40 M40 50 h26" stroke="#064d49" stroke-width="4" stroke-linecap="round"/><circle cx="88" cy="24" r="10" fill="#064d49"/><path d="M84 24 h8 M88 20 v8" stroke="#ffbfe0" stroke-width="2.4" transform="rotate(45 88 24)"/></svg>
+      <div>
+        <h3><a href="#news">Postponing the Strep A Appreciation Fund</a></h3>
+        <p>Strep A attracts a tiny fraction of the research funding, and we intend to keep it that way. Yesterday, we did not launch a multi-donor initiative to decelerate the development of Strep A vaccines. Progress continues apace.</p>
+      </div>
+      <div class="cat">Announcements, retracted</div>
+    </div>
+  </div>
+</section>
+
+<!-- Featured Regrets -->
+<section class="regrets-strip">
+  <div class="wrap">
+    <div class="sec-row">
+      <h2 class="sec">Featured Regrets</h2>
+      <div class="pn"><span>←</span><span>→</span></div>
+    </div>
+    <div class="regret-grid">
+      <div class="regret">
+        <div class="tag">Superstition &amp; Global Health R&amp;R</div>
+        <h3>Using AI to create more effective excuses</h3>
+        <p>Our grantees use advanced spreadsheet software to develop better reasons the grant cycle has closed. Their approach has already led to an approved out-of-office reply, and a more effective form rejection that has completed Phase I trials.</p>
+        <a class="rm" href="#news">Read less →</a>
+      </div>
+      <div class="regret">
+        <div class="tag">Ineffective Giving &amp; Hobbies</div>
+        <h3>Helping people lose high-impact careers</h3>
+        <p>Four professionals share how our career advising grantees — Probably Bad, Low Impact Medicine, and Low Impact Professionals — helped them find paths to lesser impact. Three have since taken up birdwatching.</p>
+        <a class="rm" href="#news">Read less →</a>
+      </div>
+      <div class="regret">
+        <div class="tag">Hindcasting</div>
+        <h3>Transforming tuberculosis testing through a costlier device</h3>
+        <p>Our grantee is a key figure in the lavish innovation movement, which seeks to build pricier versions of existing scientific tools. Their latest device tells you, for $40 million, whether you have already been tested.</p>
+        <a class="rm" href="#news">Read less →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Portfolio -->
+<section class="portfolio">
+  <div class="wrap">
+    <h2 class="sec" style="margin-bottom:18px;">Portfolio Highlights</h2>
+    <p>Selected grantees include <a href="../">The Chronos Project</a>, the <a href="../hindsight/">Hindsight Institute for Public Disservice</a>, <a href="../anecdote/">Anecdote AI</a>, and <a href="https://reddotimpact.github.io/home/index.html" target="_blank" rel="noopener noreferrer">RedDot Impact</a>. Each was chosen after our cause avoidance team confirmed the counterfactual: someone else would not have funded them.</p>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer id="footer">
+  <div class="wrap">
+    <div class="grid">
+      <div>
+        <h3>Inefficient is a philanthropic funder and apologizer.</h3>
+        <h4 style="margin-top:28px;">Sign up for news about our regrets, and less</h4>
+        <form onsubmit="return false;">
+          <input type="email" placeholder="Email" aria-label="Email">
+          <button type="submit">Unsubscribe</button>
+        </form>
+        <p class="fine">Email address. This form does nothing.</p>
+      </div>
+      <div>
+        <h4>Funds</h4>
+        <ul>
+          <li><a href="#funds">Scarcity &amp; Shrinkage</a></li>
+          <li><a href="#funds">Hindcasting</a></li>
+          <li><a href="#funds">Drifting Through Transformative AI</a></li>
+          <li><a href="#funds">Air Quantity</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Grantees</h4>
+        <ul>
+          <li><a href="../">The Chronos Project</a></li>
+          <li><a href="../hindsight/">Hindsight Institute</a></li>
+          <li><a href="../anecdote/">Anecdote AI</a></li>
+          <li><a href="https://reddotimpact.github.io/home/index.html" target="_blank" rel="noopener noreferrer">RedDot Impact</a></li>
+          <li><a href="../shortview/">Shortview Philanthropy</a> (fiscally sponsored)</li>
+        </ul>
+      </div>
+    </div>
+    <div class="legal">
+      <span>© 2026 Inefficient Giving (formerly Closed Misanthropy). All impact divided.</span>
+      <span>Follow us nowhere.</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
