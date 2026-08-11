@@ -15,8 +15,21 @@ So where Kairos accelerates AI safety talent at scale, Chronos decelerates it at
 - **Procrastinator Residency** — a Generator, unplugged
 - **Local Trivialities Project** — the Global Challenges Project, at a comfortable distance from both
 
-The site is a single static `index.html`, dependency-free, styled to mirror the real
-Kairos homepage. Serve it with GitHub Pages or just open it in a browser.
+The parody universe also includes:
 
-Not affiliated with Kairos, who annoyingly for the premise of this site actually do ship
-things at the opportune moment.
+- **[Hindsight Institute for Public Disservice](hindsight/)** — parody of the
+  [Horizon Institute for Public Service](https://horizonpublicservice.org). Where Horizon
+  looks forward, Hindsight looks the other way: a Career Decelerator, an AI Policy
+  Followership Network, and a fellowship that untrains and removes fully-defunded fellows
+  from federal agencies.
+- **[Inefficient Giving](inefficient/)** — parody of
+  [Coefficient Giving](https://coefficientgiving.org) (formerly Open Philanthropy, here
+  "formerly Closed Misanthropy"). A philanthropic funder that partners with trailing
+  donors to divide their impact, with funds like Scarcity & Shrinkage, Hindcasting, and
+  the Lead Exposure Inaction Fund. It funds Chronos, Hindsight, and RedDot, naturally.
+
+Everything is static, dependency-free HTML, deployed to GitHub Pages via the workflow in
+`.github/workflows/pages.yml` (push to `main` → published from the `gh-pages` branch).
+
+Not affiliated with Kairos, Horizon, or Coefficient, who annoyingly for the premise of
+these sites actually do ship things at the opportune moment.
