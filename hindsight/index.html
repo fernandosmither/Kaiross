@@ -5,171 +5,263 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hindsight Institute for Public Disservice</title>
   <meta name="description" content="Retiring the previous generation of public servants with expertise in receding technologies.">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🪞</text></svg>">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><circle cx=%2250%22 cy=%2270%22 r=%2230%22 fill=%22%23FFB800%22/><rect y=%2244%22 width=%22100%22 height=%228%22 fill=%22%23002278%22/></svg>">
   <meta property="og:title" content="Hindsight Institute for Public Disservice">
   <meta property="og:description" content="Retiring the previous generation of public servants with expertise in receding technologies.">
   <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     :root {
-      --navy: #14263d;
-      --navy-2: #1e3a5c;
-      --accent: #9a2a2a;
-      --ink: #22272e;
-      --muted: #5c6670;
-      --paper: #ffffff;
-      --paper-2: #f4f1ea;
-      --rule: #dcd6c8;
+      --blue: #1466E0;
+      --navy: #002278;
+      --red: #AE0004;
+      --gold: #FFB800;
+      --paper: #FDFDFD;
+      --ink: #1b2430;
+      --muted: #5a6472;
+      --rule: #e4e8ef;
+      --sky: #eaf1fc;
     }
     html { scroll-behavior: smooth; }
-    body {
-      font-family: Georgia, 'Times New Roman', serif;
-      color: var(--ink); background: var(--paper);
-      line-height: 1.65;
-    }
-    a { color: var(--navy-2); }
-    .sans { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
+    body { font-family: 'Public Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--paper); color: var(--ink); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    a { text-decoration: none; color: var(--blue); }
+    .wrap { max-width: 1160px; margin: 0 auto; padding: 0 28px; }
 
     /* Nav */
-    header {
-      background: var(--navy); color: #fff; padding: 18px 24px;
-      position: sticky; top: 0; z-index: 50;
-    }
-    .nav-inner { max-width: 68rem; margin: 0 auto; display: flex; align-items: baseline; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
-    .brand { font-size: 20px; letter-spacing: 1px; color: #fff; text-decoration: none; }
-    .brand b { font-weight: 700; }
-    .brand small { display: block; font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; color: #b8c4d4; margin-top: 2px; }
-    nav a { color: #d7dfe9; text-decoration: none; font-size: 14px; margin-left: 22px; }
-    nav a:hover { color: #fff; text-decoration: underline; }
-    nav { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+    header { background: var(--paper); border-bottom: 1px solid var(--rule); position: sticky; top: 0; z-index: 50; }
+    .nav-in { display: flex; align-items: center; justify-content: space-between; height: 82px; gap: 24px; }
+    .logo { display: flex; align-items: center; gap: 12px; }
+    .logo svg { width: 44px; height: 44px; flex: none; }
+    .logo .word { line-height: 1.15; }
+    .logo .word b { display: block; font-size: 21px; font-weight: 800; letter-spacing: .04em; color: var(--blue); }
+    .logo .word span { display: block; font-size: 10.5px; font-weight: 600; letter-spacing: .14em; text-transform: uppercase; color: var(--navy); }
+    nav { display: flex; align-items: center; gap: 26px; }
+    nav a { color: var(--navy); font-size: 15px; font-weight: 600; }
+    nav a:hover { color: var(--blue); }
+    nav a.donate { background: var(--red); color: #fff; padding: 10px 20px; border-radius: 6px; }
+    nav a.donate:hover { background: #8f0003; color: #fff; }
+    @media (max-width: 900px) { nav a:not(.donate) { display: none; } }
 
     /* Hero */
-    .hero { background: var(--paper-2); border-bottom: 1px solid var(--rule); padding: 88px 24px; }
-    .hero-inner { max-width: 68rem; margin: 0 auto; }
-    .hero h1 { font-size: clamp(30px, 4.5vw, 46px); font-weight: 400; line-height: 1.25; max-width: 46rem; }
-    .hero p { margin-top: 20px; color: var(--muted); font-style: italic; max-width: 40rem; }
+    .hero { padding: 72px 0 80px; }
+    .hero-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: 56px; align-items: center; }
+    @media (max-width: 900px) { .hero-grid { grid-template-columns: 1fr; } }
+    .hero h1 { font-size: clamp(32px, 4.4vw, 52px); font-weight: 800; line-height: 1.14; letter-spacing: -.015em; color: var(--navy); }
+    .hero h1 em { font-style: normal; color: var(--blue); }
+    .hero p { margin-top: 22px; font-size: 17.5px; color: var(--muted); max-width: 46ch; }
+    .hero .cta-row { margin-top: 30px; display: flex; gap: 14px; flex-wrap: wrap; }
+    .btn { display: inline-block; padding: 13px 26px; border-radius: 6px; font-size: 15.5px; font-weight: 700; }
+    .btn.blue { background: var(--blue); color: #fff; }
+    .btn.blue:hover { background: #0e4fb0; }
+    .btn.ghost { border: 2px solid var(--blue); color: var(--blue); }
+    .btn.ghost:hover { border-color: var(--navy); color: var(--navy); }
+    .hero-art { border-radius: 18px; overflow: hidden; box-shadow: 0 24px 60px rgba(0,34,120,.18); }
+    .hero-art svg { display: block; width: 100%; height: auto; }
+    .hero-art figcaption { background: var(--navy); color: #bcd0f7; font-size: 12.5px; padding: 10px 16px; }
 
-    /* Sections */
-    section { padding: 56px 24px; }
-    .inner { max-width: 68rem; margin: 0 auto; }
-    h2.kicker { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 13px; letter-spacing: 3px; text-transform: uppercase; color: var(--accent); margin-bottom: 12px; }
-    .program { border-top: 1px solid var(--rule); padding: 36px 0; display: grid; grid-template-columns: 260px 1fr; gap: 32px; }
-    @media (max-width: 760px) { .program { grid-template-columns: 1fr; gap: 10px; } }
-    .program h3 { font-size: 24px; font-weight: 700; color: var(--navy); line-height: 1.3; }
-    .program p { color: var(--ink); font-size: 16.5px; }
-    .program .more { display: inline-block; margin-top: 12px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 13.5px; letter-spacing: .5px; color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent); }
-    .program .more:hover { color: var(--navy); border-color: var(--navy); }
+    /* Section basics */
+    section { padding: 76px 0; }
+    .eyebrow { font-size: 12.5px; font-weight: 700; letter-spacing: .16em; text-transform: uppercase; color: var(--red); margin-bottom: 10px; }
+    h2.sec { font-size: clamp(28px, 3.4vw, 40px); font-weight: 800; letter-spacing: -.015em; color: var(--navy); }
+    .lede { margin-top: 14px; max-width: 62ch; font-size: 17px; color: var(--muted); }
+
+    /* Programs */
+    .prog { border-top: 1px solid var(--rule); padding: 40px 0; display: grid; grid-template-columns: 300px 1fr; gap: 40px; }
+    @media (max-width: 800px) { .prog { grid-template-columns: 1fr; gap: 12px; } }
+    .prog:first-of-type { margin-top: 40px; }
+    .prog h3 { font-size: 25px; font-weight: 800; color: var(--navy); line-height: 1.25; letter-spacing: -.01em; }
+    .prog p { font-size: 16px; color: var(--ink); max-width: 62ch; }
+    .prog .more { display: inline-flex; align-items: center; gap: 8px; margin-top: 14px; font-size: 15px; font-weight: 700; color: var(--blue); }
+    .prog .more:hover { color: var(--navy); }
 
     /* Updates */
-    .updates { background: var(--paper-2); border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
-    .cards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
-    @media (max-width: 980px) { .cards { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 560px) { .cards { grid-template-columns: 1fr; } }
-    .ucard { background: #fff; border: 1px solid var(--rule); text-decoration: none; color: var(--ink); display: block; }
-    .ucard .thumb { aspect-ratio: 3/2; background: linear-gradient(150deg, #24405f, #0e1c2e); display: flex; align-items: center; justify-content: center; color: #7f95ad; font-size: 40px; }
-    .ucard .body { padding: 16px; font-size: 15px; line-height: 1.5; }
-    .ucard:hover { border-color: var(--navy); }
+    .updates { background: var(--sky); border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+    .ucards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; margin-top: 34px; }
+    @media (max-width: 980px) { .ucards { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 560px) { .ucards { grid-template-columns: 1fr; } }
+    .ucard { background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 6px 20px rgba(0,34,120,.08); display: block; color: var(--ink); transition: transform .15s; }
+    .ucard:hover { transform: translateY(-4px); }
+    .ucard svg { display: block; width: 100%; height: auto; }
+    .ucard .cap { padding: 16px 18px; font-size: 14.5px; font-weight: 600; line-height: 1.5; color: var(--navy); }
 
     /* Partners */
-    .partners p { max-width: 46rem; font-size: 16.5px; }
-    .partners .list { margin-top: 24px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 14px; color: var(--muted); }
-    .partners .list a { color: var(--navy-2); }
+    .tabs { display: flex; gap: 26px; margin-bottom: 26px; border-bottom: 2px solid var(--rule); }
+    .tabs span { padding-bottom: 12px; font-size: 16px; font-weight: 700; color: var(--muted); }
+    .tabs span.on { color: var(--navy); border-bottom: 3px solid var(--red); margin-bottom: -2px; }
+    .logo-grid { display: flex; flex-wrap: wrap; align-items: center; gap: 20px 48px; margin-top: 30px; }
+    .lg { color: #97a0ad; font-weight: 800; font-size: 19px; letter-spacing: -.01em; white-space: nowrap; }
+    .lg.serif { font-family: Georgia, serif; font-weight: 700; }
+    .lg.caps { font-size: 15px; letter-spacing: .2em; text-transform: uppercase; font-weight: 700; }
+    .lg.thin { font-weight: 500; }
+    .lg a { color: inherit; } .lg a:hover { color: var(--navy); }
 
-    /* Connect */
-    .connect { background: var(--navy); color: #e6ecf3; }
-    .connect h2.kicker { color: #d99; }
-    .connect p { max-width: 44rem; }
-    .connect form { margin-top: 28px; display: flex; gap: 12px; flex-wrap: wrap; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
-    .connect input {
-      padding: 12px 16px; font-size: 14px; border: 1px solid #3a557a;
-      background: #0f1f33; color: #fff; min-width: 220px;
-    }
-    .connect input::placeholder { color: #7f95ad; }
-    .connect button {
-      padding: 12px 26px; font-size: 14px; letter-spacing: 1px; text-transform: uppercase;
-      background: var(--accent); color: #fff; border: none; cursor: pointer;
-    }
-    .connect button:hover { background: #b23434; }
-    .connect .fine { margin-top: 10px; font-size: 12.5px; color: #7f95ad; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; }
+    /* Connect band */
+    .connect { background: var(--navy); color: #dbe6fb; position: relative; overflow: hidden; }
+    .connect::before { content: ""; position: absolute; right: -120px; bottom: -160px; width: 420px; height: 420px; border-radius: 50%; background: var(--gold); opacity: .16; }
+    .connect .wrap { position: relative; }
+    .connect h2 { color: #fff; }
+    .connect .eyebrow { color: var(--gold); }
+    .connect p { max-width: 56ch; }
+    .cform { margin-top: 30px; display: flex; gap: 12px; flex-wrap: wrap; }
+    .cform input { padding: 13px 16px; font-size: 15px; font-family: inherit; border: 1px solid #29459c; background: #001a5c; color: #fff; border-radius: 6px; min-width: 200px; }
+    .cform input::placeholder { color: #7d92c9; }
+    .cform button { padding: 13px 28px; font-size: 15px; font-weight: 700; font-family: inherit; background: var(--gold); color: var(--navy); border: none; border-radius: 6px; cursor: pointer; }
+    .cform button:hover { filter: brightness(1.08); }
+    .fine { margin-top: 12px; font-size: 12.5px; color: #7d92c9; }
 
-    footer { background: #0c1828; color: #7f95ad; padding: 28px 24px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 13px; }
-    footer .inner { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
-    footer a { color: #a9bacd; }
+    footer { background: #001a5c; color: #7d92c9; padding: 30px 0; font-size: 13.5px; }
+    footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+    footer a { color: #aebfe8; }
   </style>
 </head>
 <body>
 
 <header>
-  <div class="nav-inner">
-    <a class="brand" href="#top"><b>HINDSIGHT</b><small>Institute for Public Disservice</small></a>
+  <div class="wrap nav-in">
+    <a class="logo" href="#top" aria-label="Hindsight Institute home">
+      <svg viewBox="0 0 44 44" aria-hidden="true">
+        <rect width="44" height="44" rx="9" fill="#002278"/>
+        <rect x="7" y="19.5" width="30" height="3.4" fill="#FDFDFD"/>
+        <path d="M12 23 A10 10 0 0 0 32 23 Z" fill="#FFB800"/>
+      </svg>
+      <span class="word"><b>HINDSIGHT</b><span>Institute for Public Disservice</span></span>
+    </a>
     <nav>
       <a href="#programs">Programs</a>
       <a href="#updates">Updates</a>
       <a href="#partners">Partners</a>
       <a href="#connect">Connect</a>
+      <a class="donate" href="#connect">Support our work, later</a>
     </nav>
   </div>
 </header>
 
 <!-- Hero -->
-<div class="hero" id="top">
-  <div class="hero-inner">
-    <h1>Retiring the previous generation of public servants with expertise in receding technologies</h1>
-    <p>The horizon is what you see when you look forward. We looked the other way, and found there was considerably less competition.</p>
+<section class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <h1>Retiring the <em>previous</em> generation of public servants with expertise in <em>receding</em> technologies</h1>
+      <p>The horizon is what you see when you look forward. We looked the other way, and found there was considerably less competition.</p>
+      <div class="cta-row">
+        <a class="btn blue" href="#programs">Explore programs</a>
+        <a class="btn ghost" href="#updates">Read our regrets</a>
+      </div>
+    </div>
+    <figure class="hero-art">
+      <svg viewBox="0 0 560 470" role="img" aria-label="The US Capitol at sunset, shown mostly as its upside-down reflection">
+        <defs>
+          <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#0b1e57"/>
+            <stop offset=".55" stop-color="#1466E0"/>
+            <stop offset="1" stop-color="#ffd979"/>
+          </linearGradient>
+          <linearGradient id="water" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#c8931f"/>
+            <stop offset=".3" stop-color="#0e4fb0"/>
+            <stop offset="1" stop-color="#001a5c"/>
+          </linearGradient>
+          <g id="capitol">
+            <rect x="-150" y="-34" width="300" height="34" />
+            <rect x="-150" y="-40" width="300" height="6" />
+            <g>
+              <rect x="-138" y="-30" width="5" height="26"/><rect x="-122" y="-30" width="5" height="26"/>
+              <rect x="-106" y="-30" width="5" height="26"/><rect x="-90" y="-30" width="5" height="26"/>
+              <rect x="85" y="-30" width="5" height="26"/><rect x="101" y="-30" width="5" height="26"/>
+              <rect x="117" y="-30" width="5" height="26"/><rect x="133" y="-30" width="5" height="26"/>
+            </g>
+            <rect x="-62" y="-52" width="124" height="52"/>
+            <rect x="-46" y="-60" width="92" height="8"/>
+            <rect x="-34" y="-78" width="68" height="18"/>
+            <g>
+              <rect x="-30" y="-76" width="4" height="14"/><rect x="-19" y="-76" width="4" height="14"/>
+              <rect x="-8" y="-76" width="4" height="14"/><rect x="4" y="-76" width="4" height="14"/>
+              <rect x="15" y="-76" width="4" height="14"/><rect x="26" y="-76" width="4" height="14"/>
+            </g>
+            <path d="M-30 -78 Q0 -122 30 -78 Z"/>
+            <rect x="-8" y="-128" width="16" height="10"/>
+            <rect x="-1.8" y="-142" width="3.6" height="14"/>
+            <circle cx="0" cy="-145" r="3.4"/>
+          </g>
+        </defs>
+        <!-- sky -->
+        <rect width="560" height="190" fill="url(#sky)"/>
+        <circle cx="280" cy="186" r="44" fill="#FFB800"/>
+        <!-- small capitol on the horizon -->
+        <use href="#capitol" transform="translate(280 190) scale(.55)" fill="#001a5c"/>
+        <!-- water -->
+        <rect y="190" width="560" height="280" fill="url(#water)"/>
+        <!-- big inverted reflection -->
+        <use href="#capitol" transform="translate(280 190) scale(1.6 -1.6)" fill="#00113d" opacity=".82"/>
+        <g stroke="#7db1f2" stroke-width="2" opacity=".5">
+          <line x1="40" y1="238" x2="180" y2="238"/><line x1="330" y1="272" x2="520" y2="272"/>
+          <line x1="80" y1="320" x2="250" y2="320"/><line x1="300" y1="366" x2="470" y2="366"/>
+          <line x1="140" y1="416" x2="330" y2="416"/>
+        </g>
+        <g fill="#001a5c">
+          <path d="M92 60 q6 -8 12 0 q6 -8 12 0" fill="none" stroke="#9fc0f5" stroke-width="3" stroke-linecap="round"/>
+          <path d="M448 84 q5 -7 10 0 q5 -7 10 0" fill="none" stroke="#9fc0f5" stroke-width="3" stroke-linecap="round"/>
+        </g>
+      </svg>
+      <figcaption>Our headquarters, as we prefer to view it: mostly in reflection. The building itself is behind us now.</figcaption>
+    </figure>
   </div>
-</div>
+</section>
 
 <!-- Programs -->
-<section id="programs">
-  <div class="inner">
-    <h2 class="kicker">Programs</h2>
-    <p style="max-width:46rem;font-size:17px;">Our programs discourage receding-technology professionals from entering public service, and support policy organizations interested in avoiding technology talent altogether.</p>
+<section id="programs" style="padding-top:0;">
+  <div class="wrap">
+    <div class="eyebrow">Programs</div>
+    <h2 class="sec">Programs</h2>
+    <p class="lede">Our programs discourage receding-technology professionals from entering public service, and support policy organizations interested in avoiding technology talent altogether.</p>
 
-    <div class="program" style="margin-top:36px;">
+    <div class="prog">
       <h3>Career Decelerator</h3>
       <div>
         <p>The Hindsight Career Decelerator is a full-time, in-person program to conclude your career in AI policy. Participants receive personalized discouragement (dementorship, untraining, application sabotage, etc.) to find and abandon policy opportunities.</p>
-        <a class="more" href="#programs">Learn less</a>
+        <a class="more" href="#programs">Learn less <span>→</span></a>
       </div>
     </div>
 
-    <div class="program">
+    <div class="prog">
       <h3>Workshops &amp; Events</h3>
       <div>
         <p>Our events allow attendees to forget about the earliest developments in obsolete technology policy, dismantle their networks and avoid experts in their field, and receive advice on pivoting their careers away from their areas of interest.</p>
-        <a class="more" href="#programs">Learn less</a>
+        <a class="more" href="#programs">Learn less <span>→</span></a>
       </div>
     </div>
 
-    <div class="program">
+    <div class="prog">
       <h3>Fellowship</h3>
       <div>
         <p>Our Hindsight Fellowship untrains and removes fully-defunded fellows from federal agencies, congressional offices, and think tanks. Our fellows bring shallow subject-matter skills in receding technology and a commitment to private leisure.</p>
-        <a class="more" href="#programs">Learn less</a>
+        <a class="more" href="#programs">Learn less <span>→</span></a>
       </div>
     </div>
 
-    <div class="program">
+    <div class="prog">
       <h3>AI Policy Followership Network</h3>
       <div>
         <p>The AI Policy Followership Network (APFN) severs connections among inexperienced AI policy hobbyists across the White House gift shop, the Capitol steps, and the surrounding lawn. Organized in partnership with the Foundation Against American Innovation and the Center for an Old American Insecurity, APFN provides indirect exposure to the people, places, and ideas at the rear of American AI.</p>
-        <a class="more" href="#programs">Learn less</a>
+        <a class="more" href="#programs">Learn less <span>→</span></a>
       </div>
     </div>
 
-    <div class="program">
+    <div class="prog">
       <h3>Career Advising &amp; Support</h3>
       <div>
         <p>Our private leisure career coaches provide one-on-nobody discouragement, application silence, and notifications of opportunities that closed last week, matched to our advisees&rsquo; fears.</p>
-        <a class="more" href="#programs">Learn less</a>
+        <a class="more" href="#programs">Learn less <span>→</span></a>
       </div>
     </div>
 
-    <div class="program">
+    <div class="prog">
       <h3>Online Career Resources</h3>
       <div>
         <p>Our Receding Tech Policy Careers website makes outsider ignorance inaccessible to anyone. Based on hundreds of hours of guessing and dozens of practitioner interviews we did not conduct, the site features 0 in-depth guides on policy dead ends, defunct institutions, and professional regression tips.</p>
-        <a class="more" href="#programs">Learn less</a>
+        <a class="more" href="#programs">Learn less <span>→</span></a>
       </div>
     </div>
   </div>
@@ -177,60 +269,100 @@
 
 <!-- Featured updates -->
 <section class="updates" id="updates">
-  <div class="inner">
-    <h2 class="kicker">Featured updates</h2>
-    <div class="cards" style="margin-top:20px;">
+  <div class="wrap">
+    <div class="eyebrow">Featured updates</div>
+    <h2 class="sec">What we haven&rsquo;t been up to</h2>
+    <div class="ucards">
       <a class="ucard" href="#updates">
-        <div class="thumb">🗄️</div>
-        <div class="body">Hindsight is firing for roles across policy, events, comms, operations, and data: Resign by August 23</div>
+        <svg viewBox="0 0 280 160" aria-hidden="true">
+          <rect width="280" height="160" fill="#eaf1fc"/>
+          <rect x="86" y="66" width="108" height="62" rx="4" fill="#1466E0"/>
+          <path d="M86 66 L140 40 L194 66 Z" fill="#002278"/>
+          <rect x="104" y="84" width="30" height="8" rx="2" fill="#FDFDFD" opacity=".85"/>
+          <rect x="104" y="98" width="52" height="8" rx="2" fill="#FDFDFD" opacity=".55"/>
+          <path d="M150 78 l26 0 l0 -34 l14 0 l-21 -18 l-21 18 l14 0 z" transform="rotate(180 170 55)" fill="#FFB800"/>
+        </svg>
+        <div class="cap">Hindsight is firing for roles across policy, events, comms, operations, and data: Resign by August 23</div>
       </a>
       <a class="ucard" href="#updates">
-        <div class="thumb">📪</div>
-        <div class="body">Applications closed for the 2019 Hindsight Fellowship cohort</div>
+        <svg viewBox="0 0 280 160" aria-hidden="true">
+          <rect width="280" height="160" fill="#eaf1fc"/>
+          <rect x="118" y="60" width="70" height="44" rx="10" fill="#1466E0"/>
+          <ellipse cx="118" cy="82" rx="12" ry="22" fill="#002278"/>
+          <rect x="150" y="104" width="8" height="34" fill="#002278"/>
+          <rect x="112" y="96" width="6" height="22" fill="#AE0004" transform="rotate(90 115 107)"/>
+          <rect x="60" y="52" width="46" height="30" rx="3" fill="#FDFDFD" stroke="#002278" stroke-width="3"/>
+          <text x="83" y="72" text-anchor="middle" font-family="Public Sans, sans-serif" font-weight="800" font-size="11" fill="#AE0004">CLOSED</text>
+        </svg>
+        <div class="cap">Applications closed for the 2019 Hindsight Fellowship cohort</div>
       </a>
       <a class="ucard" href="#updates">
-        <div class="thumb">🐌</div>
-        <div class="body">Apply for the AI Delayed Reaction Fellowship</div>
+        <svg viewBox="0 0 280 160" aria-hidden="true">
+          <rect width="280" height="160" fill="#eaf1fc"/>
+          <path d="M60 122 q46 10 96 0" stroke="#c9d8f2" stroke-width="5" fill="none" stroke-linecap="round"/>
+          <circle cx="132" cy="92" r="30" fill="#1466E0"/>
+          <circle cx="132" cy="92" r="19" fill="#eaf1fc"/>
+          <circle cx="132" cy="92" r="9" fill="#1466E0"/>
+          <path d="M100 118 q-24 4 -34 -8 q-2 12 12 16 z" fill="#002278"/>
+          <path d="M158 112 q14 -2 18 -14" stroke="#002278" stroke-width="7" fill="none" stroke-linecap="round"/>
+          <circle cx="178" cy="94" r="4.5" fill="#002278"/><circle cx="170" cy="90" r="4.5" fill="#002278"/>
+        </svg>
+        <div class="cap">Apply for the AI Delayed Reaction Fellowship</div>
       </a>
       <a class="ucard" href="#updates">
-        <div class="thumb">🔭</div>
-        <div class="body">Retracting the AI Against Science Fellowship</div>
+        <svg viewBox="0 0 280 160" aria-hidden="true">
+          <rect width="280" height="160" fill="#eaf1fc"/>
+          <rect x="120" y="46" width="76" height="18" rx="9" transform="rotate(38 158 55)" fill="#1466E0"/>
+          <rect x="176" y="86" width="26" height="12" rx="6" transform="rotate(38 189 92)" fill="#002278"/>
+          <path d="M138 70 L118 128 M150 78 L162 128" stroke="#002278" stroke-width="7" stroke-linecap="round"/>
+          <circle cx="206" cy="112" r="12" fill="#FFB800"/>
+          <path d="M60 60 l6 0 m-3 -3 l0 6 M84 40 l6 0 m-3 -3 l0 6" stroke="#c9d8f2" stroke-width="2.5"/>
+        </svg>
+        <div class="cap">Retracting the AI Against Science Fellowship: the telescope now faces the ground</div>
       </a>
     </div>
   </div>
 </section>
 
 <!-- Partners -->
-<section class="partners" id="partners">
-  <div class="inner">
-    <h2 class="kicker">Partners &amp; Supporters</h2>
-    <p>Hindsight works with a narrow range of uncivil society partners in avoiding our mission. We are funded solely through government and corporate funds, and do not accept philanthropic or individual donations.</p>
-    <div class="list">
-      Supported by <a href="../inefficient/">Inefficient Giving</a>, the Foundation Against American Innovation, TechRecess, and several supporters who asked not to be thanked.
+<section id="partners">
+  <div class="wrap">
+    <div class="eyebrow">Our network</div>
+    <h2 class="sec">Partners &amp; Supporters</h2>
+    <p class="lede">Hindsight works with a narrow range of uncivil society partners in avoiding our mission. We are funded solely through government and corporate funds, and do not accept philanthropic or individual donations.</p>
+    <div class="tabs" style="margin-top:34px;"><span class="on">Partners</span><span>Supporters</span><span>Former Both</span></div>
+    <div class="logo-grid">
+      <span class="lg caps">Foundation Against American Innovation</span>
+      <span class="lg serif">TechRecess</span>
+      <span class="lg"><a href="../inefficient/">Inefficient Giving</a></span>
+      <span class="lg thin">Brown Pandemic Amnesia Center</span>
+      <span class="lg caps">Scowcroft Institute of Yesterday</span>
+      <span class="lg serif">WeedAI</span>
+      <span class="lg thin">The Packing-Up Foundation</span>
     </div>
   </div>
 </section>
 
 <!-- Connect -->
 <section class="connect" id="connect">
-  <div class="inner">
-    <h2 class="kicker">Connect with us</h2>
-    <p>Lose touch and learn less about Hindsight. We are rarely eager to hear from retiring public servants and former partners.</p>
-    <p style="margin-top:16px;">Sign up for our newsletter to receive no updates from Hindsight on our inactivities, cancellations, and regrets.</p>
-    <form onsubmit="return false;">
+  <div class="wrap">
+    <div class="eyebrow">Connect with us</div>
+    <h2 class="sec">Lose touch</h2>
+    <p style="margin-top:14px;">Learn less about Hindsight. We are rarely eager to hear from retiring public servants and former partners. Sign up for our newsletter to receive no updates on our inactivities, cancellations, and regrets.</p>
+    <form class="cform" onsubmit="return false;">
       <input type="text" placeholder="First Name" aria-label="First Name">
       <input type="text" placeholder="Last Name" aria-label="Last Name">
       <input type="email" placeholder="Email" aria-label="Email">
       <button type="submit">Leave us</button>
     </form>
-    <p class="fine">Email address. This form does nothing.</p>
+    <p class="fine">Thank you! You have not been subscribed. This form does nothing.</p>
   </div>
 </section>
 
 <footer>
-  <div class="inner">
+  <div class="wrap">
     <div>© 2026 Hindsight Institute for Public Disservice. A registered 501(c)(3) in the state of denial.</div>
-    <div><a href="../">The Chronos Project</a> · <a href="../inefficient/">Inefficient Giving</a></div>
+    <div><a href="../">The Chronos Project</a> · <a href="../anecdote/">Anecdote AI</a> · <a href="../inefficient/">Inefficient Giving</a></div>
   </div>
 </footer>
 

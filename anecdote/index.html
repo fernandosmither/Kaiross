@@ -5,157 +5,179 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Anecdote AI</title>
   <meta name="description" content="Anecdote AI is a research institute recalling key trends and questions that will shape the trajectory and governance of Artificial Intelligence, approximately.">
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📉</text></svg>">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><rect width=%22100%22 height=%22100%22 rx=%2218%22 fill=%22%23212A2A%22/><path d=%22M15 70 C30 62 35 74 45 58 S60 66 70 42 S85 50 90 28%22 stroke=%22%2300A5A6%22 stroke-width=%229%22 fill=%22none%22 stroke-linecap=%22round%22/></svg>">
   <meta property="og:title" content="Anecdote AI">
   <meta property="og:description" content="Guessing the trajectory of AI for the benefit of society.">
   <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     :root {
-      --bg: #f7f9fb;
-      --ink: #10202e;
-      --muted: #5b6b78;
-      --navy: #0e2a41;
-      --accent: #e05c2a;
-      --teal: #12746a;
-      --rule: #dde5ec;
-      --card: #ffffff;
-      --mono: 'SF Mono', ui-monospace, 'Cascadia Code', Menlo, Consolas, monospace;
+      --teal: #00A5A6;
+      --teal-dark: #00838a;
+      --ink: #212A2A;
+      --slate: #3A4848;
+      --muted: #8b9999;
+      --rule: #e3eaea;
+      --bg: #ffffff;
+      --bg-soft: #f5f8f8;
+      --mono: 'IBM Plex Mono', ui-monospace, Menlo, Consolas, monospace;
     }
     html { scroll-behavior: smooth; }
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-      background: var(--bg); color: var(--ink); line-height: 1.6;
-    }
-    a { color: var(--teal); }
+    body { font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; background: var(--bg); color: var(--ink); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+    a { text-decoration: none; color: var(--teal-dark); }
+    .wrap { max-width: 1180px; margin: 0 auto; padding: 0 28px; }
 
     /* Nav */
-    header { background: #fff; border-bottom: 1px solid var(--rule); padding: 16px 24px; position: sticky; top: 0; z-index: 50; }
-    .nav-inner { max-width: 74rem; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
-    .brand { font-weight: 800; font-size: 20px; color: var(--navy); text-decoration: none; letter-spacing: -0.3px; display: flex; align-items: center; gap: 9px; }
-    .brand .mark { width: 26px; height: 26px; }
-    nav a { color: var(--ink); text-decoration: none; font-size: 14px; margin-left: 20px; font-weight: 500; }
-    nav a:hover { color: var(--accent); }
-    .sub-btn { background: var(--navy); color: #fff !important; border-radius: 8px; padding: 8px 18px; }
-    .sub-btn:hover { background: #1a4468; color: #fff !important; }
-    @media (max-width: 800px) { nav a:not(.sub-btn) { display: none; } }
+    header { background: #fff; border-bottom: 1px solid var(--rule); position: sticky; top: 0; z-index: 50; }
+    .nav-in { display: flex; align-items: center; justify-content: space-between; height: 66px; gap: 24px; }
+    .logo { display: flex; align-items: center; gap: 10px; font-weight: 700; font-size: 19px; color: var(--ink); letter-spacing: -.02em; }
+    .logo svg { width: 28px; height: 28px; }
+    nav { display: flex; align-items: center; gap: 24px; }
+    nav a { color: var(--slate); font-size: 14.5px; font-weight: 500; }
+    nav a:hover { color: var(--teal-dark); }
+    nav a.cta { border: 1.5px solid var(--teal); color: var(--teal-dark); border-radius: 6px; padding: 7px 16px; font-weight: 600; }
+    nav a.cta:hover { background: var(--teal); color: #fff; }
+    @media (max-width: 860px) { nav a:not(.cta) { display: none; } }
 
     /* Hero */
-    .hero { padding: 72px 24px 40px; }
-    .inner { max-width: 74rem; margin: 0 auto; }
-    .hero h1 { font-size: clamp(30px, 4.6vw, 52px); font-weight: 800; letter-spacing: -1px; line-height: 1.15; max-width: 46rem; color: var(--navy); }
-    .hero p.lede { margin-top: 16px; font-size: 17px; color: var(--muted); max-width: 40rem; }
+    .hero { padding: 68px 0 48px; }
+    .hero h1 { font-size: clamp(30px, 4.3vw, 50px); font-weight: 800; letter-spacing: -.025em; line-height: 1.12; max-width: 21ch; }
+    .hero h1 .tick { color: var(--teal); }
+    .hero p.lede { margin-top: 18px; font-size: 16.5px; color: var(--slate); max-width: 66ch; }
 
-    /* Stat cards */
-    .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 44px; }
+    /* Stat tickers */
+    .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; margin-top: 48px; border: 1px solid var(--rule); border-radius: 10px; overflow: hidden; }
     @media (max-width: 980px) { .stats { grid-template-columns: repeat(2, 1fr); } }
     @media (max-width: 620px) { .stats { grid-template-columns: 1fr; } }
-    .stat { background: var(--card); border: 1px solid var(--rule); border-radius: 12px; padding: 20px; }
-    .stat .cat { font-size: 11.5px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); font-weight: 700; }
-    .stat .num { font-family: var(--mono); font-size: 30px; font-weight: 700; color: var(--accent); margin: 8px 0 6px; }
-    .stat .num small { font-size: 15px; color: var(--navy); }
-    .stat p { font-size: 13.5px; color: var(--ink); }
-    .stat .ci { margin-top: 10px; font-family: var(--mono); font-size: 11.5px; color: var(--muted); border-top: 1px dashed var(--rule); padding-top: 8px; }
+    .stat { padding: 22px 24px; border-right: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+    .stat .cat { font-family: var(--mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+    .stat .num { font-family: var(--mono); font-size: 32px; font-weight: 600; color: var(--teal); margin: 10px 0 8px; letter-spacing: -.02em; }
+    .stat .num small { font-size: 15px; color: var(--slate); }
+    .stat p { font-size: 13.5px; color: var(--slate); }
+    .stat .ci { margin-top: 12px; font-family: var(--mono); font-size: 11px; color: var(--muted); }
+    .trendlink { display: inline-flex; align-items: center; gap: 8px; margin-top: 26px; font-weight: 600; font-size: 15px; color: var(--teal-dark); }
 
-    .trendlink { display: inline-block; margin-top: 22px; font-weight: 600; font-size: 15px; }
-
-    /* Trust bar */
-    .trust { border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); background: #fff; padding: 18px 24px; text-align: center; font-size: 13.5px; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); }
+    /* Publications strip */
+    .strip { border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); padding: 22px 0; overflow: hidden; }
+    .strip .wrap { display: flex; align-items: center; gap: 34px; }
+    .strip-label { flex: none; font-size: 13px; font-weight: 600; color: var(--muted); letter-spacing: .04em; text-transform: uppercase; }
+    .rail { flex: 1; min-width: 0; overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 6%, #000 90%, transparent); mask-image: linear-gradient(90deg, transparent, #000 6%, #000 90%, transparent); }
+    .track { display: flex; align-items: center; gap: 52px; width: max-content; animation: scroll 34s linear infinite; }
+    .rail:hover .track { animation-play-state: paused; }
+    @keyframes scroll { to { transform: translateX(-50%); } }
+    .track span { font-size: 17px; font-weight: 700; color: #aab7b7; white-space: nowrap; letter-spacing: -.01em; }
+    .track span.serif { font-family: Georgia, serif; font-weight: 400; font-style: italic; }
+    .track span.caps { font-size: 13px; letter-spacing: .22em; text-transform: uppercase; }
 
     /* Sections */
-    section { padding: 56px 24px; }
-    h2.sec { font-size: clamp(24px, 3.2vw, 34px); font-weight: 800; letter-spacing: -0.5px; color: var(--navy); margin-bottom: 26px; }
+    section { padding: 64px 0; }
+    h2.sec { font-size: clamp(23px, 3vw, 32px); font-weight: 800; letter-spacing: -.02em; margin-bottom: 28px; }
+    h2.sec small { display: block; font-size: 14px; font-weight: 500; color: var(--muted); letter-spacing: 0; margin-top: 6px; }
 
     /* Research cards */
-    .rcards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .rcards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
     @media (max-width: 980px) { .rcards { grid-template-columns: repeat(2, 1fr); } }
     @media (max-width: 620px) { .rcards { grid-template-columns: 1fr; } }
-    .rcard { background: var(--card); border: 1px solid var(--rule); border-radius: 12px; padding: 18px; display: block; text-decoration: none; color: var(--ink); }
-    .rcard:hover { border-color: var(--accent); }
-    .rcard .tag { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--accent); font-weight: 700; }
-    .rcard .date { font-size: 12px; color: var(--muted); margin-left: 8px; }
-    .rcard h3 { font-size: 16.5px; margin: 8px 0 6px; color: var(--navy); line-height: 1.4; }
-    .rcard p { font-size: 13.5px; color: var(--muted); }
+    .rcard { border: 1px solid var(--rule); border-radius: 10px; overflow: hidden; display: block; color: var(--ink); background: #fff; transition: border-color .15s, transform .15s; }
+    .rcard:hover { border-color: var(--teal); transform: translateY(-3px); }
+    .rcard svg.thumb { display: block; width: 100%; height: auto; border-bottom: 1px solid var(--rule); }
+    .rcard .body { padding: 16px; }
+    .rcard .tag { font-family: var(--mono); font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase; color: var(--teal-dark); }
+    .rcard .date { font-size: 11.5px; color: var(--muted); margin-left: 8px; }
+    .rcard h3 { font-size: 15.5px; margin: 8px 0 6px; line-height: 1.4; font-weight: 700; }
+    .rcard p { font-size: 13px; color: var(--slate); }
 
-    /* Banner */
-    .subscribe { background: var(--navy); color: #dbe7f1; }
-    .subscribe .inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
-    .subscribe h2 { color: #fff; font-size: 24px; font-weight: 800; }
-    .subscribe p { max-width: 34rem; font-size: 15px; }
-    .subscribe a.btn { background: var(--accent); color: #fff; text-decoration: none; padding: 12px 26px; border-radius: 8px; font-weight: 600; }
-    .subscribe a.btn:hover { background: #c74e21; }
+    /* Subscribe band -->*/
+    .subscribe { background: var(--bg-soft); border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); padding: 44px 0; }
+    .subscribe .wrap { display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+    .subscribe h2 { font-size: 23px; font-weight: 800; letter-spacing: -.02em; }
+    .subscribe p { font-size: 14.5px; color: var(--slate); max-width: 48ch; margin-top: 4px; }
+    .subscribe a.btn { background: var(--teal); color: #fff; padding: 12px 24px; border-radius: 6px; font-weight: 600; font-size: 15px; }
+    .subscribe a.btn:hover { background: var(--teal-dark); }
 
-    /* Latest list */
-    .latest-item { border-top: 1px solid var(--rule); padding: 22px 0; display: grid; grid-template-columns: 170px 1fr; gap: 24px; }
+    /* Latest */
+    .latest-item { border-top: 1px solid var(--rule); padding: 24px 0; display: grid; grid-template-columns: 160px 1fr; gap: 26px; }
     @media (max-width: 700px) { .latest-item { grid-template-columns: 1fr; gap: 4px; } }
-    .latest-item .meta { font-size: 13px; color: var(--muted); }
-    .latest-item .meta b { display: block; color: var(--accent); font-size: 11.5px; letter-spacing: 1.5px; text-transform: uppercase; }
-    .latest-item h3 { font-size: 18px; color: var(--navy); line-height: 1.4; font-weight: 700; }
-    .latest-item p { font-size: 14.5px; color: var(--muted); margin-top: 4px; }
+    .latest-item .meta { font-size: 12.5px; color: var(--muted); }
+    .latest-item .meta b { display: block; font-family: var(--mono); color: var(--teal-dark); font-size: 10.5px; letter-spacing: .12em; text-transform: uppercase; font-weight: 600; }
+    .latest-item h3 { font-size: 18px; line-height: 1.35; font-weight: 700; letter-spacing: -.01em; }
+    .latest-item p { font-size: 14px; color: var(--slate); margin-top: 5px; }
 
     /* Chart */
-    .snapshot { background: #fff; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
-    .chartbox { background: var(--card); border: 1px solid var(--rule); border-radius: 12px; padding: 24px; }
-    .chartbox h3 { font-size: 19px; color: var(--navy); margin-bottom: 4px; }
-    .chartbox .subtitle { font-family: var(--mono); font-size: 12.5px; color: var(--accent); margin-bottom: 16px; }
+    .snapshot { background: var(--bg-soft); border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+    .chart-tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
+    .chart-tabs span { font-size: 13px; font-weight: 600; padding: 7px 14px; border-radius: 999px; border: 1px solid var(--rule); background: #fff; color: var(--slate); }
+    .chart-tabs span.on { background: var(--ink); border-color: var(--ink); color: #fff; }
+    .chartbox { background: #fff; border: 1px solid var(--rule); border-radius: 10px; padding: 26px; }
+    .chartbox h3 { font-size: 19px; font-weight: 800; letter-spacing: -.015em; margin-bottom: 4px; }
+    .chartbox .subtitle { font-family: var(--mono); font-size: 12px; color: var(--teal-dark); margin-bottom: 18px; }
     .chartbox svg { width: 100%; height: auto; display: block; }
-    .chartbox .caption { margin-top: 12px; font-size: 13px; color: var(--muted); font-style: italic; }
-    .chartbox .method { margin-top: 14px; font-size: 13.5px; color: var(--ink); border-top: 1px dashed var(--rule); padding-top: 14px; }
+    .chartbox .caption { margin-top: 12px; font-size: 12.5px; color: var(--muted); font-style: italic; }
+    .chartbox .method { margin-top: 14px; font-size: 13.5px; color: var(--slate); border-top: 1px dashed var(--rule); padding-top: 14px; }
+    .chartbox .brand { margin-top: 10px; font-family: var(--mono); font-size: 11px; color: var(--muted); }
 
     /* Data tiles */
-    .tiles { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    .tiles { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
     @media (max-width: 980px) { .tiles { grid-template-columns: repeat(2, 1fr); } }
     @media (max-width: 620px) { .tiles { grid-template-columns: 1fr; } }
-    .tile { background: var(--card); border: 1px solid var(--rule); border-radius: 12px; padding: 20px; text-align: center; }
-    .tile .emoji { font-size: 34px; }
-    .tile b { display: block; margin: 10px 0 4px; color: var(--navy); font-size: 16px; }
-    .tile span { font-size: 13px; color: var(--muted); }
+    .tile { border: 1px solid var(--rule); border-radius: 10px; padding: 22px; display: flex; gap: 16px; align-items: flex-start; }
+    .tile svg { width: 44px; height: 44px; flex: none; }
+    .tile b { display: block; font-size: 15.5px; letter-spacing: -.01em; }
+    .tile span { font-size: 13px; color: var(--slate); }
 
     /* Quotes */
-    .quotes { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    .qwrap { position: relative; }
+    .qnav { display: flex; gap: 10px; margin-bottom: 18px; }
+    .qnav span { width: 34px; height: 34px; border: 1px solid var(--rule); border-radius: 50%; display: grid; place-items: center; color: var(--muted); font-size: 16px; }
+    .quotes { display: grid; grid-template-columns: repeat(2, 1fr); gap: 18px; }
     @media (max-width: 800px) { .quotes { grid-template-columns: 1fr; } }
-    .quote { background: var(--card); border: 1px solid var(--rule); border-radius: 12px; padding: 22px; }
-    .quote p.q { font-size: 15.5px; color: var(--ink); font-style: italic; }
-    .quote .who { margin-top: 14px; font-size: 13px; color: var(--muted); }
-    .quote .who b { color: var(--navy); display: block; font-size: 14px; }
+    .quote { border: 1px solid var(--rule); border-radius: 10px; padding: 24px; background: #fff; }
+    .quote p.q { font-size: 15.5px; line-height: 1.6; }
+    .quote .who { margin-top: 16px; font-size: 12.5px; color: var(--muted); }
+    .quote .who b { color: var(--ink); display: block; font-size: 13.5px; }
 
-    /* CTA */
-    .cta { text-align: center; }
-    .cta h2 { font-size: clamp(26px, 3.6vw, 40px); font-weight: 800; letter-spacing: -0.5px; color: var(--navy); max-width: 44rem; margin: 0 auto 14px; line-height: 1.25; }
-    .cta p { color: var(--muted); margin-bottom: 26px; }
-    .cta a.btn { background: var(--navy); color: #fff; text-decoration: none; padding: 13px 30px; border-radius: 8px; font-weight: 600; }
-    .cta a.btn:hover { background: #1a4468; }
+    /* CTA band */
+    .cta { background: var(--ink); color: #fff; text-align: center; padding: 80px 24px; }
+    .cta h2 { font-size: clamp(26px, 3.6vw, 42px); font-weight: 800; letter-spacing: -.02em; max-width: 24ch; margin: 0 auto 14px; line-height: 1.2; }
+    .cta p { color: #aab7b7; margin-bottom: 28px; font-size: 16px; }
+    .cta a.btn { background: var(--teal); color: #fff; padding: 13px 28px; border-radius: 6px; font-weight: 600; }
+    .cta a.btn:hover { background: var(--teal-dark); }
 
-    /* Footer */
-    footer { background: var(--navy); color: #9db4c6; padding: 40px 24px; font-size: 14px; }
-    footer .inner { display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
-    footer p { max-width: 40rem; }
-    footer a { color: #c9dae8; }
+    footer { background: #182121; color: #8b9999; padding: 36px 0; font-size: 13.5px; }
+    footer .wrap { display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+    footer p { max-width: 58ch; }
+    footer a { color: #b9c6c6; }
   </style>
 </head>
 <body>
 
 <header>
-  <div class="nav-inner">
-    <a class="brand" href="#top">
-      <svg class="mark" viewBox="0 0 24 24" fill="none" stroke="#e05c2a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17c3-1 4-9 6-6s2 5 4 2 3-8 5-4 3 6 3 6"/></svg>
-      anecdote ai
+  <div class="wrap nav-in">
+    <a class="logo" href="#top">
+      <svg viewBox="0 0 28 28" aria-hidden="true">
+        <rect width="28" height="28" rx="6" fill="#212A2A"/>
+        <path d="M5 19 C8 17 9 20 12 15 S16 17 19 11 S23 13 24 8" stroke="#00A5A6" stroke-width="2.4" fill="none" stroke-linecap="round"/>
+      </svg>
+      Anecdote AI
     </a>
     <nav>
       <a href="#data">Data-ish</a>
       <a href="#latest">Latest</a>
       <a href="#snapshot">Hunches</a>
       <a href="#quotes">Experts</a>
-      <a class="sub-btn" href="#subscribe">Subscribe</a>
+      <a class="cta" href="#subscribe">Subscribe</a>
     </nav>
   </div>
 </header>
 
 <!-- Hero -->
 <section class="hero" id="top">
-  <div class="inner">
-    <h1>Guessing the trajectory of AI for the benefit of society.</h1>
-    <p class="lede">Where others investigate, we recollect. Anecdote AI produces the field's least rigorous estimates at unbeatable speed, drawing on a proprietary methodology of overheard conversations, misremembered charts, and one very confident group chat.</p>
+  <div class="wrap">
+    <h1>Guessing the trajectory of AI <span class="tick">for the benefit of society.</span></h1>
+    <p class="lede">Where others investigate, we recollect. Anecdote AI produces the field&rsquo;s least rigorous estimates at unbeatable speed, drawing on a proprietary methodology of overheard conversations, misremembered charts, and one very confident group chat.</p>
 
     <div class="stats">
       <div class="stat">
@@ -167,7 +189,7 @@
       <div class="stat">
         <div class="cat">Confidence stock growth</div>
         <div class="num">3.4×<small>/year</small></div>
-        <p>Our confidence is growing at 3.4× per year. Our confidence is doubling every 6.8 months. It is unencumbered by evidence.</p>
+        <p>Our confidence is growing at 3.4× per year and doubling every 6.8 months. It is unencumbered by evidence.</p>
         <div class="ci">90% CI: not applicable — we are certain</div>
       </div>
       <div class="stat">
@@ -178,7 +200,7 @@
       </div>
       <div class="stat">
         <div class="cat">Time to conclusion</div>
-        <div class="num">2.1<small> minutes</small></div>
+        <div class="num">2.1<small> min</small></div>
         <p>Gigawatt-scale conclusions can be reached in about 2 minutes, before the question has finished being asked.</p>
         <div class="ci">90% CI: 1.0 to 3.6 minutes</div>
       </div>
@@ -196,55 +218,102 @@
       </div>
     </div>
 
-    <a class="trendlink" href="#snapshot">See all AI hunches &amp; vibes →</a>
+    <a class="trendlink" href="#snapshot">See all AI hunches &amp; vibes <span>→</span></a>
   </div>
 </section>
 
-<div class="trust">Repeated by leading group chats and reply guys</div>
+<!-- Publications strip -->
+<div class="strip">
+  <div class="wrap">
+    <div class="strip-label">Repeated by leading outlets</div>
+    <div class="rail">
+      <div class="track" id="pubtrack"></div>
+    </div>
+  </div>
+</div>
 
 <!-- Research cards -->
 <section id="data">
-  <div class="inner">
+  <div class="wrap">
     <h2 class="sec">Unreliable vibes and dependent speculation</h2>
     <div class="rcards">
       <a class="rcard" href="#data">
-        <span class="tag">Data</span><span class="date">Updated whenever</span>
-        <h3>AI Data Centers</h3>
-        <p>Closed notebook of AI data centers, compiled from a window seat on a descent into SFO and a strong feeling about warehouses.</p>
+        <svg class="thumb" viewBox="0 0 280 130" aria-hidden="true">
+          <rect width="280" height="130" fill="#f5f8f8"/>
+          <rect x="40" y="66" width="52" height="38" fill="#212A2A"/><rect x="100" y="50" width="70" height="54" fill="#00A5A6"/>
+          <rect x="178" y="76" width="44" height="28" fill="#8b9999"/>
+          <rect x="108" y="58" width="10" height="8" fill="#fff" opacity=".7"/><rect x="124" y="58" width="10" height="8" fill="#fff" opacity=".7"/>
+          <path d="M228 40 a10 10 0 1 1 12 12" stroke="#8b9999" stroke-width="3" fill="none"/>
+          <circle cx="248" cy="34" r="3" fill="#8b9999"/>
+          <path d="M20 110 h240" stroke="#e3eaea" stroke-width="3"/>
+          <path d="M60 30 l30 22" stroke="#00A5A6" stroke-width="2" stroke-dasharray="4 4"/>
+          <path d="M52 22 a10 6 0 1 0 20 0 a10 6 0 1 0 -20 0" fill="#dfe9e9"/>
+        </svg>
+        <div class="body">
+          <span class="tag">Data</span><span class="date">Updated whenever</span>
+          <h3>AI Data Centers</h3>
+          <p>Closed notebook of AI data centers, compiled from a window seat on a descent into SFO and a strong feeling about warehouses.</p>
+        </div>
       </a>
       <a class="rcard" href="#data">
-        <span class="tag">Anecdote Insight</span><span class="date">Feb. 4, 2026</span>
-        <h3>Compute is probably expensive</h3>
-        <p>Compute accounts for the majority of sentences at AI dinner parties, per a tweet we can no longer find.</p>
+        <svg class="thumb" viewBox="0 0 280 130" aria-hidden="true">
+          <rect width="280" height="130" fill="#f5f8f8"/>
+          <rect x="46" y="80" width="30" height="26" rx="3" fill="#00A5A6"/>
+          <rect x="86" y="62" width="30" height="44" rx="3" fill="#212A2A"/>
+          <rect x="126" y="44" width="30" height="62" rx="3" fill="#00A5A6"/>
+          <rect x="166" y="70" width="30" height="36" rx="3" fill="#8b9999"/>
+          <text x="216" y="70" font-family="IBM Plex Mono, monospace" font-size="26" fill="#212A2A">$?</text>
+        </svg>
+        <div class="body">
+          <span class="tag">Anecdote Insight</span><span class="date">Feb. 4, 2026</span>
+          <h3>Compute is probably expensive</h3>
+          <p>Compute accounts for the majority of sentences at AI dinner parties, per a tweet we can no longer find.</p>
+        </div>
       </a>
       <a class="rcard" href="#data">
-        <span class="tag">Report</span><span class="date">Aug. 20, 2024</span>
-        <h3>Can AI scaling continue through Thursday?</h3>
-        <p>We asked around. Opinions were mixed. The report concludes that it either can or cannot.</p>
+        <svg class="thumb" viewBox="0 0 280 130" aria-hidden="true">
+          <rect width="280" height="130" fill="#f5f8f8"/>
+          <path d="M40 100 C90 96 120 80 150 60 S220 30 244 26" stroke="#00A5A6" stroke-width="4" fill="none" stroke-linecap="round"/>
+          <path d="M244 26 l-14 -2 m14 2 l-4 13" stroke="#00A5A6" stroke-width="4" fill="none" stroke-linecap="round"/>
+          <text x="150" y="112" font-family="IBM Plex Mono, monospace" font-size="13" fill="#8b9999" text-anchor="middle">now → Thursday</text>
+          <text x="228" y="58" font-family="Inter, sans-serif" font-weight="800" font-size="22" fill="#212A2A">?</text>
+        </svg>
+        <div class="body">
+          <span class="tag">Report</span><span class="date">Aug. 20, 2024</span>
+          <h3>Can AI scaling continue through Thursday?</h3>
+          <p>We asked around. Opinions were mixed. The report concludes that it either can or cannot.</p>
+        </div>
       </a>
       <a class="rcard" href="#data">
-        <span class="tag">Benchmark</span><span class="date">Flagship</span>
-        <h3>BackyardMath</h3>
-        <p>A benchmark of arithmetic problems every model already solves. Saturation was reached at launch. Progress guaranteed.</p>
+        <svg class="thumb" viewBox="0 0 280 130" aria-hidden="true">
+          <rect width="280" height="130" fill="#212A2A"/>
+          <text x="140" y="58" font-family="Inter, sans-serif" font-weight="800" font-size="24" fill="#fff" text-anchor="middle">BackyardMath</text>
+          <text x="140" y="88" font-family="IBM Plex Mono, monospace" font-size="15" fill="#00A5A6" text-anchor="middle">1 + 1 = ?   (solved)</text>
+        </svg>
+        <div class="body">
+          <span class="tag">Benchmark</span><span class="date">Flagship</span>
+          <h3>BackyardMath</h3>
+          <p>A benchmark of arithmetic problems every model already solves. Saturation was reached at launch. Progress guaranteed.</p>
+        </div>
       </a>
     </div>
   </div>
 </section>
 
 <!-- Subscribe -->
-<section class="subscribe" id="subscribe">
-  <div class="inner">
+<div class="subscribe" id="subscribe">
+  <div class="wrap">
     <div>
       <h2>Stay misinformed!</h2>
       <p>Get sporadic updates on our speculation and weekly commentary on AI news we skimmed.</p>
     </div>
     <a class="btn" href="#subscribe">Subscribe (this button does nothing)</a>
   </div>
-</section>
+</div>
 
 <!-- Latest work -->
 <section id="latest">
-  <div class="inner">
+  <div class="wrap">
     <h2 class="sec">Our latest work</h2>
 
     <div class="latest-item">
@@ -254,7 +323,6 @@
         <p>Based on a conversation overheard on a train. The fifth worker could not be reached, or possibly did not exist.</p>
       </div>
     </div>
-
     <div class="latest-item">
       <div class="meta"><b>Anecdote Insight</b>Jul. 31, 2026</div>
       <div>
@@ -262,7 +330,6 @@
         <p>The sources are us. The vibes are unspecified. The climb is unmeasured, but felt.</p>
       </div>
     </div>
-
     <div class="latest-item">
       <div class="meta"><b>Report</b>Jul. 29, 2026</div>
       <div>
@@ -270,7 +337,6 @@
         <p>Our model suggests a technological singularity could be delayed by scheduling conflicts, a long weekend, or rain.</p>
       </div>
     </div>
-
     <div class="latest-item">
       <div class="meta"><b>Newsletter</b>Jul. 22, 2026</div>
       <div>
@@ -278,7 +344,6 @@
         <p>We did not see it coming. The spreadsheet contained our forecasts. We have re-derived them from memory, which is faster anyway.</p>
       </div>
     </div>
-
     <div class="latest-item">
       <div class="meta"><b>Anecdote Insight</b>Jul. 15, 2026</div>
       <div>
@@ -291,46 +356,64 @@
 
 <!-- Snapshot chart -->
 <section class="snapshot" id="snapshot">
-  <div class="inner">
+  <div class="wrap">
     <h2 class="sec">Snapshots from our recollections</h2>
+    <div class="chart-tabs">
+      <span class="on">Global vibes</span><span>GPT-something</span><span>Inference (felt)</span><span>NVIDIA (heard of it)</span><span>Chinese models (two, we think)</span>
+    </div>
     <div class="chartbox">
       <h3>Global AI vibes are doubling every 7 months</h3>
       <div class="subtitle">3.4x/year &nbsp; 90% CI: 2.8–4.1x/year, give or take whatever</div>
       <svg viewBox="0 0 720 260" role="img" aria-label="A freehand chart with unlabeled axes showing a wobbly rising line">
-        <line x1="50" y1="10" x2="50" y2="220" stroke="#c5d2dd" stroke-width="1.5"/>
-        <line x1="50" y1="220" x2="700" y2="220" stroke="#c5d2dd" stroke-width="1.5"/>
-        <text x="16" y="120" fill="#8aa0b2" font-size="11" font-family="monospace" transform="rotate(-90 16 120)">vibes (units unclear)</text>
-        <text x="340" y="245" fill="#8aa0b2" font-size="11" font-family="monospace">time, roughly</text>
+        <line x1="50" y1="10" x2="50" y2="220" stroke="#dbe4e4" stroke-width="1.5"/>
+        <line x1="50" y1="220" x2="700" y2="220" stroke="#dbe4e4" stroke-width="1.5"/>
+        <g stroke="#eef3f3" stroke-width="1"><line x1="50" y1="60" x2="700" y2="60"/><line x1="50" y1="120" x2="700" y2="120"/><line x1="50" y1="180" x2="700" y2="180"/></g>
+        <text x="16" y="120" fill="#8b9999" font-size="11" font-family="IBM Plex Mono, monospace" transform="rotate(-90 16 120)">vibes (units unclear)</text>
+        <text x="340" y="245" fill="#8b9999" font-size="11" font-family="IBM Plex Mono, monospace">time, roughly</text>
         <path d="M60 200 C 110 190, 130 210, 170 185 S 240 195, 280 150 S 340 170, 390 120 S 450 140, 500 80 S 570 110, 620 45 S 670 60, 695 30"
-              fill="none" stroke="#e05c2a" stroke-width="3" stroke-linecap="round"/>
-        <path d="M60 205 C 150 200, 300 175, 695 55" fill="none" stroke="#12746a" stroke-width="1.5" stroke-dasharray="6 5"/>
-        <text x="430" y="60" fill="#12746a" font-size="11" font-family="monospace">trend (drawn freehand)</text>
-        <circle cx="280" cy="150" r="4" fill="#0e2a41"/>
-        <text x="290" y="146" fill="#0e2a41" font-size="11" font-family="monospace">the wedding</text>
+              fill="none" stroke="#00A5A6" stroke-width="3" stroke-linecap="round"/>
+        <path d="M60 205 C 150 200, 300 175, 695 55" fill="none" stroke="#3A4848" stroke-width="1.5" stroke-dasharray="6 5"/>
+        <text x="430" y="60" fill="#3A4848" font-size="11" font-family="IBM Plex Mono, monospace">trend (drawn freehand)</text>
+        <circle cx="280" cy="150" r="4" fill="#212A2A"/>
+        <text x="290" y="146" fill="#212A2A" font-size="11" font-family="IBM Plex Mono, monospace">the wedding</text>
       </svg>
       <div class="caption">Figure 1. The trajectory of AI, from memory. Y-axis withheld for methodological reasons.</div>
       <div class="method">These estimates are inferred from revenue data we imagined, financial disclosures we did not read, and analyst reports summarized to us at a wedding. Data coverage varies by mood: Mondays begin in 2022, while the other days start whenever.</div>
+      <div class="brand">Anecdote AI | CC-BY | axes sold separately</div>
     </div>
   </div>
 </section>
 
 <!-- Discover less data -->
 <section>
-  <div class="inner">
+  <div class="wrap">
     <h2 class="sec">Discover less data</h2>
     <div class="tiles">
-      <div class="tile"><div class="emoji">🧠</div><b>Forgettable AI Models</b><span>3 ML models remembered, most of them GPT</span></div>
-      <div class="tile"><div class="emoji">🏆</div><b>AI Capabilities</b><span>Model performance on key benchmarks, ranked by logo</span></div>
-      <div class="tile"><div class="emoji">🏢</div><b>AI Data Centers</b><span>Open database of large buildings we drove past</span></div>
-      <div class="tile"><div class="emoji">🧾</div><b>Chip Sales</b><span>Shipment volumes extrapolated from one Best Buy receipt</span></div>
+      <div class="tile">
+        <svg viewBox="0 0 44 44"><circle cx="22" cy="22" r="22" fill="#e3f4f4"/><path d="M14 28 C17 26 18 29 21 24 S25 26 28 19 S31 21 32 15" stroke="#00A5A6" stroke-width="2.6" fill="none" stroke-linecap="round"/></svg>
+        <div><b>Forgettable AI Models</b><span>3 ML models remembered, most of them GPT</span></div>
+      </div>
+      <div class="tile">
+        <svg viewBox="0 0 44 44"><circle cx="22" cy="22" r="22" fill="#e3f4f4"/><rect x="12" y="24" width="5" height="8" fill="#00A5A6"/><rect x="20" y="18" width="5" height="14" fill="#212A2A"/><rect x="28" y="12" width="5" height="20" fill="#00A5A6"/></svg>
+        <div><b>AI Capabilities</b><span>Model performance on key benchmarks, ranked by logo</span></div>
+      </div>
+      <div class="tile">
+        <svg viewBox="0 0 44 44"><circle cx="22" cy="22" r="22" fill="#e3f4f4"/><rect x="12" y="20" width="9" height="12" fill="#212A2A"/><rect x="23" y="14" width="10" height="18" fill="#00A5A6"/></svg>
+        <div><b>AI Data Centers</b><span>Open database of large buildings we drove past</span></div>
+      </div>
+      <div class="tile">
+        <svg viewBox="0 0 44 44"><circle cx="22" cy="22" r="22" fill="#e3f4f4"/><rect x="13" y="13" width="18" height="18" rx="2" fill="#212A2A"/><rect x="18" y="18" width="8" height="8" fill="#00A5A6"/><path d="M13 17h-4M13 22h-4M13 27h-4M35 17h-4M35 22h-4M35 27h-4M17 9v4M22 9v4M27 9v4M17 35v-4M22 35v-4M27 35v-4" stroke="#212A2A" stroke-width="1.6" transform="translate(4 0)"/></svg>
+        <div><b>Chip Sales</b><span>Shipment volumes extrapolated from one Best Buy receipt</span></div>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- Quotes -->
 <section id="quotes" style="padding-top:0;">
-  <div class="inner">
+  <div class="wrap qwrap">
     <h2 class="sec">What experts say about Anecdote AI</h2>
+    <div class="qnav"><span>←</span><span>→</span></div>
     <div class="quotes">
       <div class="quote">
         <p class="q">&ldquo;Anecdote AI&rsquo;s research brings both haze and shallowness to the rapidly evolving landscape of artificial intelligence.&rdquo;</p>
@@ -352,23 +435,26 @@
   </div>
 </section>
 
-<!-- CTA -->
+<!-- CTA band -->
 <section class="cta">
-  <div class="inner">
-    <h2>Forwarded by leaders at Misanthropic, ShallowMind, and group chats worldwide</h2>
-    <p>Need shallower insights? Our team offers custom guesswork and advisory vibes.</p>
-    <a class="btn" href="#quotes">Book a hunch</a>
-  </div>
+  <h2>Forwarded by leaders at Misanthropic, ShallowMind, and group chats worldwide</h2>
+  <p>Need shallower insights? Our team offers custom guesswork and advisory vibes.</p>
+  <a class="btn" href="#quotes">Book a hunch</a>
 </section>
 
 <footer>
-  <div class="inner">
-    <p><b style="color:#fff;">Anecdote AI</b> is a research institute recalling key trends and questions that will shape the trajectory and governance of Artificial Intelligence, approximately. Charts CC-BY, axes sold separately. Funded by a general support grant from <a href="../inefficient/">Inefficient Giving</a>, which we have not gotten around to depositing.</p>
-    <div>
-      <a href="../">The Chronos Project</a> · <a href="../hindsight/">Hindsight Institute</a> · <a href="../inefficient/">Inefficient Giving</a>
-    </div>
+  <div class="wrap">
+    <p><b style="color:#fff;">Anecdote AI</b> is a research institute recalling key trends and questions that will shape the trajectory and governance of Artificial Intelligence, approximately. Funded by a general support grant from <a href="../inefficient/">Inefficient Giving</a>, which we have not gotten around to depositing.</p>
+    <div><a href="../">The Chronos Project</a> · <a href="../hindsight/">Hindsight Institute</a> · <a href="../inefficient/">Inefficient Giving</a></div>
   </div>
 </footer>
+
+<script>
+const PUBS = ['The Economish', 'MIT Technology Rumor', 'Vibes Weekly', 'The Group Chat', 'Secondhand Info', 'Reply Guys Quarterly', 'The Overheard Journal', 'Hacker News (flagged)'];
+const CLS = ['', 'serif', 'caps', '', 'serif', '', 'caps', ''];
+const html = PUBS.map((p, i) => '<span class="' + CLS[i] + '">' + p + '</span>').join('');
+document.getElementById('pubtrack').innerHTML = html + html;
+</script>
 
 </body>
 </html>
