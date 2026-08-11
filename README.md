@@ -22,6 +22,11 @@ The parody universe also includes:
   looks forward, Hindsight looks the other way: a Career Decelerator, an AI Policy
   Followership Network, and a fellowship that untrains and removes fully-defunded fellows
   from federal agencies.
+- **[Anecdote AI](anecdote/)** — parody of [Epoch AI](https://epoch.ai). Where Epoch
+  investigates the trajectory of AI with rigorous data and confidence intervals, Anecdote
+  guesses it: stat cards reading "90% CI: probably to definitely," the BackyardMath
+  benchmark (saturated at launch), and a hero chart drawn freehand with the y-axis
+  "withheld for methodological reasons."
 - **[Inefficient Giving](inefficient/)** — parody of
   [Coefficient Giving](https://coefficientgiving.org) (formerly Open Philanthropy, here
   "formerly Closed Misanthropy"). A philanthropic funder that partners with trailing

@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anecdote AI</title>
+  <meta name="description" content="Anecdote AI is a research institute recalling key trends and questions that will shape the trajectory and governance of Artificial Intelligence, approximately.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📉</text></svg>">
+  <meta property="og:title" content="Anecdote AI">
+  <meta property="og:description" content="Guessing the trajectory of AI for the benefit of society.">
+  <meta property="og:type" content="website">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg: #f7f9fb;
+      --ink: #10202e;
+      --muted: #5b6b78;
+      --navy: #0e2a41;
+      --accent: #e05c2a;
+      --teal: #12746a;
+      --rule: #dde5ec;
+      --card: #ffffff;
+      --mono: 'SF Mono', ui-monospace, 'Cascadia Code', Menlo, Consolas, monospace;
+    }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background: var(--bg); color: var(--ink); line-height: 1.6;
+    }
+    a { color: var(--teal); }
+
+    /* Nav */
+    header { background: #fff; border-bottom: 1px solid var(--rule); padding: 16px 24px; position: sticky; top: 0; z-index: 50; }
+    .nav-inner { max-width: 74rem; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { font-weight: 800; font-size: 20px; color: var(--navy); text-decoration: none; letter-spacing: -0.3px; display: flex; align-items: center; gap: 9px; }
+    .brand .mark { width: 26px; height: 26px; }
+    nav a { color: var(--ink); text-decoration: none; font-size: 14px; margin-left: 20px; font-weight: 500; }
+    nav a:hover { color: var(--accent); }
+    .sub-btn { background: var(--navy); color: #fff !important; border-radius: 8px; padding: 8px 18px; }
+    .sub-btn:hover { background: #1a4468; color: #fff !important; }
+    @media (max-width: 800px) { nav a:not(.sub-btn) { display: none; } }
+
+    /* Hero */
+    .hero { padding: 72px 24px 40px; }
+    .inner { max-width: 74rem; margin: 0 auto; }
+    .hero h1 { font-size: clamp(30px, 4.6vw, 52px); font-weight: 800; letter-spacing: -1px; line-height: 1.15; max-width: 46rem; color: var(--navy); }
+    .hero p.lede { margin-top: 16px; font-size: 17px; color: var(--muted); max-width: 40rem; }
+
+    /* Stat cards */
+    .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 44px; }
+    @media (max-width: 980px) { .stats { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 620px) { .stats { grid-template-columns: 1fr; } }
+    .stat { background: var(--card); border: 1px solid var(--rule); border-radius: 12px; padding: 20px; }
+    .stat .cat { font-size: 11.5px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); font-weight: 700; }
+    .stat .num { font-family: var(--mono); font-size: 30px; font-weight: 700; color: var(--accent); margin: 8px 0 6px; }
+    .stat .num small { font-size: 15px; color: var(--navy); }
+    .stat p { font-size: 13.5px; color: var(--ink); }
+    .stat .ci { margin-top: 10px; font-family: var(--mono); font-size: 11.5px; color: var(--muted); border-top: 1px dashed var(--rule); padding-top: 8px; }
+
+    .trendlink { display: inline-block; margin-top: 22px; font-weight: 600; font-size: 15px; }
+
+    /* Trust bar */
+    .trust { border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); background: #fff; padding: 18px 24px; text-align: center; font-size: 13.5px; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); }
+
+    /* Sections */
+    section { padding: 56px 24px; }
+    h2.sec { font-size: clamp(24px, 3.2vw, 34px); font-weight: 800; letter-spacing: -0.5px; color: var(--navy); margin-bottom: 26px; }
+
+    /* Research cards */
+    .rcards { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    @media (max-width: 980px) { .rcards { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 620px) { .rcards { grid-template-columns: 1fr; } }
+    .rcard { background: var(--card); border: 1px solid var(--rule); border-radius: 12px; padding: 18px; display: block; text-decoration: none; color: var(--ink); }
+    .rcard:hover { border-color: var(--accent); }
+    .rcard .tag { font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--accent); font-weight: 700; }
+    .rcard .date { font-size: 12px; color: var(--muted); margin-left: 8px; }
+    .rcard h3 { font-size: 16.5px; margin: 8px 0 6px; color: var(--navy); line-height: 1.4; }
+    .rcard p { font-size: 13.5px; color: var(--muted); }
+
+    /* Banner */
+    .subscribe { background: var(--navy); color: #dbe7f1; }
+    .subscribe .inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+    .subscribe h2 { color: #fff; font-size: 24px; font-weight: 800; }
+    .subscribe p { max-width: 34rem; font-size: 15px; }
+    .subscribe a.btn { background: var(--accent); color: #fff; text-decoration: none; padding: 12px 26px; border-radius: 8px; font-weight: 600; }
+    .subscribe a.btn:hover { background: #c74e21; }
+
+    /* Latest list */
+    .latest-item { border-top: 1px solid var(--rule); padding: 22px 0; display: grid; grid-template-columns: 170px 1fr; gap: 24px; }
+    @media (max-width: 700px) { .latest-item { grid-template-columns: 1fr; gap: 4px; } }
+    .latest-item .meta { font-size: 13px; color: var(--muted); }
+    .latest-item .meta b { display: block; color: var(--accent); font-size: 11.5px; letter-spacing: 1.5px; text-transform: uppercase; }
+    .latest-item h3 { font-size: 18px; color: var(--navy); line-height: 1.4; font-weight: 700; }
+    .latest-item p { font-size: 14.5px; color: var(--muted); margin-top: 4px; }
+
+    /* Chart */
+    .snapshot { background: #fff; border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); }
+    .chartbox { background: var(--card); border: 1px solid var(--rule); border-radius: 12px; padding: 24px; }
+    .chartbox h3 { font-size: 19px; color: var(--navy); margin-bottom: 4px; }
+    .chartbox .subtitle { font-family: var(--mono); font-size: 12.5px; color: var(--accent); margin-bottom: 16px; }
+    .chartbox svg { width: 100%; height: auto; display: block; }
+    .chartbox .caption { margin-top: 12px; font-size: 13px; color: var(--muted); font-style: italic; }
+    .chartbox .method { margin-top: 14px; font-size: 13.5px; color: var(--ink); border-top: 1px dashed var(--rule); padding-top: 14px; }
+
+    /* Data tiles */
+    .tiles { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+    @media (max-width: 980px) { .tiles { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 620px) { .tiles { grid-template-columns: 1fr; } }
+    .tile { background: var(--card); border: 1px solid var(--rule); border-radius: 12px; padding: 20px; text-align: center; }
+    .tile .emoji { font-size: 34px; }
+    .tile b { display: block; margin: 10px 0 4px; color: var(--navy); font-size: 16px; }
+    .tile span { font-size: 13px; color: var(--muted); }
+
+    /* Quotes */
+    .quotes { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    @media (max-width: 800px) { .quotes { grid-template-columns: 1fr; } }
+    .quote { background: var(--card); border: 1px solid var(--rule); border-radius: 12px; padding: 22px; }
+    .quote p.q { font-size: 15.5px; color: var(--ink); font-style: italic; }
+    .quote .who { margin-top: 14px; font-size: 13px; color: var(--muted); }
+    .quote .who b { color: var(--navy); display: block; font-size: 14px; }
+
+    /* CTA */
+    .cta { text-align: center; }
+    .cta h2 { font-size: clamp(26px, 3.6vw, 40px); font-weight: 800; letter-spacing: -0.5px; color: var(--navy); max-width: 44rem; margin: 0 auto 14px; line-height: 1.25; }
+    .cta p { color: var(--muted); margin-bottom: 26px; }
+    .cta a.btn { background: var(--navy); color: #fff; text-decoration: none; padding: 13px 30px; border-radius: 8px; font-weight: 600; }
+    .cta a.btn:hover { background: #1a4468; }
+
+    /* Footer */
+    footer { background: var(--navy); color: #9db4c6; padding: 40px 24px; font-size: 14px; }
+    footer .inner { display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+    footer p { max-width: 40rem; }
+    footer a { color: #c9dae8; }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="nav-inner">
+    <a class="brand" href="#top">
+      <svg class="mark" viewBox="0 0 24 24" fill="none" stroke="#e05c2a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17c3-1 4-9 6-6s2 5 4 2 3-8 5-4 3 6 3 6"/></svg>
+      anecdote ai
+    </a>
+    <nav>
+      <a href="#data">Data-ish</a>
+      <a href="#latest">Latest</a>
+      <a href="#snapshot">Hunches</a>
+      <a href="#quotes">Experts</a>
+      <a class="sub-btn" href="#subscribe">Subscribe</a>
+    </nav>
+  </div>
+</header>
+
+<!-- Hero -->
+<section class="hero" id="top">
+  <div class="inner">
+    <h1>Guessing the trajectory of AI for the benefit of society.</h1>
+    <p class="lede">Where others investigate, we recollect. Anecdote AI produces the field's least rigorous estimates at unbeatable speed, drawing on a proprietary methodology of overheard conversations, misremembered charts, and one very confident group chat.</p>
+
+    <div class="stats">
+      <div class="stat">
+        <div class="cat">Model capabilities</div>
+        <div class="num">yes</div>
+        <p>Model capabilities have grown faster since early 2024, or possibly slower. Directionally, something is happening.</p>
+        <div class="ci">90% CI: probably to definitely</div>
+      </div>
+      <div class="stat">
+        <div class="cat">Confidence stock growth</div>
+        <div class="num">3.4×<small>/year</small></div>
+        <p>Our confidence is growing at 3.4× per year. Our confidence is doubling every 6.8 months. It is unencumbered by evidence.</p>
+        <div class="ci">90% CI: not applicable — we are certain</div>
+      </div>
+      <div class="stat">
+        <div class="cat">Vibes, frontier models</div>
+        <div class="num">5×<small>/year</small></div>
+        <p>Vibes around frontier language models have been growing at 5× per year since 2020, doubling every 5.2 months.</p>
+        <div class="ci">Source: a guy</div>
+      </div>
+      <div class="stat">
+        <div class="cat">Time to conclusion</div>
+        <div class="num">2.1<small> minutes</small></div>
+        <p>Gigawatt-scale conclusions can be reached in about 2 minutes, before the question has finished being asked.</p>
+        <div class="ci">90% CI: 1.0 to 3.6 minutes</div>
+      </div>
+      <div class="stat">
+        <div class="cat">Largest known anecdote</div>
+        <div class="num">a lot<small> of H100s</small></div>
+        <p>The largest known AI data center has a computing capacity of &ldquo;a lot,&rdquo; equivalent to roughly several NVIDIA chips.</p>
+        <div class="ci">Heard secondhand, at a wedding</div>
+      </div>
+      <div class="stat">
+        <div class="cat">Opinions per dollar</div>
+        <div class="num">1.37×<small>/year</small></div>
+        <p>Our opinions per dollar have improved by 37% per year, and our opinions are free, so interpret that as you will.</p>
+        <div class="ci">90% CI: 1.30× to 1.45×, we assume</div>
+      </div>
+    </div>
+
+    <a class="trendlink" href="#snapshot">See all AI hunches &amp; vibes →</a>
+  </div>
+</section>
+
+<div class="trust">Repeated by leading group chats and reply guys</div>
+
+<!-- Research cards -->
+<section id="data">
+  <div class="inner">
+    <h2 class="sec">Unreliable vibes and dependent speculation</h2>
+    <div class="rcards">
+      <a class="rcard" href="#data">
+        <span class="tag">Data</span><span class="date">Updated whenever</span>
+        <h3>AI Data Centers</h3>
+        <p>Closed notebook of AI data centers, compiled from a window seat on a descent into SFO and a strong feeling about warehouses.</p>
+      </a>
+      <a class="rcard" href="#data">
+        <span class="tag">Anecdote Insight</span><span class="date">Feb. 4, 2026</span>
+        <h3>Compute is probably expensive</h3>
+        <p>Compute accounts for the majority of sentences at AI dinner parties, per a tweet we can no longer find.</p>
+      </a>
+      <a class="rcard" href="#data">
+        <span class="tag">Report</span><span class="date">Aug. 20, 2024</span>
+        <h3>Can AI scaling continue through Thursday?</h3>
+        <p>We asked around. Opinions were mixed. The report concludes that it either can or cannot.</p>
+      </a>
+      <a class="rcard" href="#data">
+        <span class="tag">Benchmark</span><span class="date">Flagship</span>
+        <h3>BackyardMath</h3>
+        <p>A benchmark of arithmetic problems every model already solves. Saturation was reached at launch. Progress guaranteed.</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- Subscribe -->
+<section class="subscribe" id="subscribe">
+  <div class="inner">
+    <div>
+      <h2>Stay misinformed!</h2>
+      <p>Get sporadic updates on our speculation and weekly commentary on AI news we skimmed.</p>
+    </div>
+    <a class="btn" href="#subscribe">Subscribe (this button does nothing)</a>
+  </div>
+</section>
+
+<!-- Latest work -->
+<section id="latest">
+  <div class="inner">
+    <h2 class="sec">Our latest work</h2>
+
+    <div class="latest-item">
+      <div class="meta"><b>Report</b>Aug. 6, 2026</div>
+      <div>
+        <h3>Four in five US workers now delegate tasks to whoever is standing nearest</h3>
+        <p>Based on a conversation overheard on a train. The fifth worker could not be reached, or possibly did not exist.</p>
+      </div>
+    </div>
+
+    <div class="latest-item">
+      <div class="meta"><b>Anecdote Insight</b>Jul. 31, 2026</div>
+      <div>
+        <h3>Serious vibes kept climbing in July, sources say</h3>
+        <p>The sources are us. The vibes are unspecified. The climb is unmeasured, but felt.</p>
+      </div>
+    </div>
+
+    <div class="latest-item">
+      <div class="meta"><b>Report</b>Jul. 29, 2026</div>
+      <div>
+        <h3>Even after R&amp;D is automated, something will probably come up</h3>
+        <p>Our model suggests a technological singularity could be delayed by scheduling conflicts, a long weekend, or rain.</p>
+      </div>
+    </div>
+
+    <div class="latest-item">
+      <div class="meta"><b>Newsletter</b>Jul. 22, 2026</div>
+      <div>
+        <h3>We accidentally deleted our spreadsheet — should we have seen it coming?</h3>
+        <p>We did not see it coming. The spreadsheet contained our forecasts. We have re-derived them from memory, which is faster anyway.</p>
+      </div>
+    </div>
+
+    <div class="latest-item">
+      <div class="meta"><b>Anecdote Insight</b>Jul. 15, 2026</div>
+      <div>
+        <h3>Our AI detector is a coin</h3>
+        <p>It rarely flags human writing, sometimes flags AI text, and occasionally lands on its edge, which we score as &ldquo;mixed authorship.&rdquo;</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Snapshot chart -->
+<section class="snapshot" id="snapshot">
+  <div class="inner">
+    <h2 class="sec">Snapshots from our recollections</h2>
+    <div class="chartbox">
+      <h3>Global AI vibes are doubling every 7 months</h3>
+      <div class="subtitle">3.4x/year &nbsp; 90% CI: 2.8–4.1x/year, give or take whatever</div>
+      <svg viewBox="0 0 720 260" role="img" aria-label="A freehand chart with unlabeled axes showing a wobbly rising line">
+        <line x1="50" y1="10" x2="50" y2="220" stroke="#c5d2dd" stroke-width="1.5"/>
+        <line x1="50" y1="220" x2="700" y2="220" stroke="#c5d2dd" stroke-width="1.5"/>
+        <text x="16" y="120" fill="#8aa0b2" font-size="11" font-family="monospace" transform="rotate(-90 16 120)">vibes (units unclear)</text>
+        <text x="340" y="245" fill="#8aa0b2" font-size="11" font-family="monospace">time, roughly</text>
+        <path d="M60 200 C 110 190, 130 210, 170 185 S 240 195, 280 150 S 340 170, 390 120 S 450 140, 500 80 S 570 110, 620 45 S 670 60, 695 30"
+              fill="none" stroke="#e05c2a" stroke-width="3" stroke-linecap="round"/>
+        <path d="M60 205 C 150 200, 300 175, 695 55" fill="none" stroke="#12746a" stroke-width="1.5" stroke-dasharray="6 5"/>
+        <text x="430" y="60" fill="#12746a" font-size="11" font-family="monospace">trend (drawn freehand)</text>
+        <circle cx="280" cy="150" r="4" fill="#0e2a41"/>
+        <text x="290" y="146" fill="#0e2a41" font-size="11" font-family="monospace">the wedding</text>
+      </svg>
+      <div class="caption">Figure 1. The trajectory of AI, from memory. Y-axis withheld for methodological reasons.</div>
+      <div class="method">These estimates are inferred from revenue data we imagined, financial disclosures we did not read, and analyst reports summarized to us at a wedding. Data coverage varies by mood: Mondays begin in 2022, while the other days start whenever.</div>
+    </div>
+  </div>
+</section>
+
+<!-- Discover less data -->
+<section>
+  <div class="inner">
+    <h2 class="sec">Discover less data</h2>
+    <div class="tiles">
+      <div class="tile"><div class="emoji">🧠</div><b>Forgettable AI Models</b><span>3 ML models remembered, most of them GPT</span></div>
+      <div class="tile"><div class="emoji">🏆</div><b>AI Capabilities</b><span>Model performance on key benchmarks, ranked by logo</span></div>
+      <div class="tile"><div class="emoji">🏢</div><b>AI Data Centers</b><span>Open database of large buildings we drove past</span></div>
+      <div class="tile"><div class="emoji">🧾</div><b>Chip Sales</b><span>Shipment volumes extrapolated from one Best Buy receipt</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- Quotes -->
+<section id="quotes" style="padding-top:0;">
+  <div class="inner">
+    <h2 class="sec">What experts say about Anecdote AI</h2>
+    <div class="quotes">
+      <div class="quote">
+        <p class="q">&ldquo;Anecdote AI&rsquo;s research brings both haze and shallowness to the rapidly evolving landscape of artificial intelligence.&rdquo;</p>
+        <div class="who"><b>A Professor We Met Once</b>At a conference, we think</div>
+      </div>
+      <div class="quote">
+        <p class="q">&ldquo;Several times I thought I found errors in their results. I had. They were.&rdquo;</p>
+        <div class="who"><b>Former CEO of Somewhere</b>Now advising broadly</div>
+      </div>
+      <div class="quote">
+        <p class="q">&ldquo;I wouldn&rsquo;t have nearly as confused an understanding of important trends in AI without Anecdote.&rdquo;</p>
+        <div class="who"><b>A Podcast Guest</b>Episode unclear</div>
+      </div>
+      <div class="quote">
+        <p class="q">&ldquo;Anecdote does the least-researched survey work in the industry, at speeds rigor cannot match.&rdquo;</p>
+        <div class="who"><b>Executive Director</b>An Institute</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <div class="inner">
+    <h2>Forwarded by leaders at Misanthropic, ShallowMind, and group chats worldwide</h2>
+    <p>Need shallower insights? Our team offers custom guesswork and advisory vibes.</p>
+    <a class="btn" href="#quotes">Book a hunch</a>
+  </div>
+</section>
+
+<footer>
+  <div class="inner">
+    <p><b style="color:#fff;">Anecdote AI</b> is a research institute recalling key trends and questions that will shape the trajectory and governance of Artificial Intelligence, approximately. Charts CC-BY, axes sold separately. Funded by a general support grant from <a href="../inefficient/">Inefficient Giving</a>, which we have not gotten around to depositing.</p>
+    <div>
+      <a href="../">The Chronos Project</a> · <a href="../hindsight/">Hindsight Institute</a> · <a href="../inefficient/">Inefficient Giving</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
