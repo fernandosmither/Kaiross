@@ -27,6 +27,13 @@ The parody universe also includes:
   guesses it: stat cards reading "90% CI: probably to definitely," the BackyardMath
   benchmark (saturated at launch), and a hero chart drawn freehand with the y-axis
   "withheld for methodological reasons."
+- **[Shortview Philanthropy](shortview/)** — parody of
+  [Longview Philanthropy](https://www.longview.org). "Bold philanthropy for a flourishing
+  future" becomes "Timid philanthropy for a fleeting present": funds like the Receding
+  Challenges Fund and the Nuclear Weapons Vibes Fund, a hero illustration of a view
+  blocked by a very close hill, and the flagship campaign "What if the 10% gave 1%?"
+  (RedDot's community page already lists an alumnus at "Shortview Philanthropy" — this is
+  that org.)
 - **[Inefficient Giving](inefficient/)** — parody of
   [Coefficient Giving](https://coefficientgiving.org) (formerly Open Philanthropy, here
   "formerly Closed Misanthropy"). A philanthropic funder that partners with trailing
